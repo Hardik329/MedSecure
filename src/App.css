@@ -1,0 +1,85 @@
+/* === Base === */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* === Header & Footer === */
+.top-nav {
+  background-color: #212c42;
+  color: white;
+  font-size: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.footer {
+  background-color: #1f2937;
+  color: #9ca3af;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.875rem;
+  margin-top: auto;
+}
+
+/* === Content Area === */
+.content {
+  padding: 2rem;
+  flex-grow: 1;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+/* === Cards === */
+.grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.airy-card {
+  padding: 2rem;
+  background: linear-gradient(to bottom right, #ffffff, #f1f5f9);
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.airy-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  color: #4b5563;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* === Module Page === */
+.module-title {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.module-description {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
