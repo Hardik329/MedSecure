@@ -3,15 +3,12 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import LogoutIcon from "@mui/icons-material/Logout";
 import React, { useState, useEffect, useRef } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Link,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./App.css";
-import { handleGoogleLogin,  } from "./auth";
+import { handleGoogleLogin } from "./auth";
 import { auth, provider } from "./firebase";
+import Module1 from "./modules/Module1";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const modules = [
   "Introduction to Medical IoT",
@@ -45,7 +42,7 @@ const Home = () => (
           <CardContent>
             <h2 className="card-title">Module {index + 1}</h2>
             <p className="card-text">{title}</p>
-            <Link to={`/module/${index}`}>
+            <Link to={`/module/${index + 1}`}>
               <Button>Start Module</Button>
             </Link>
           </CardContent>
@@ -56,26 +53,18 @@ const Home = () => (
 );
 
 const ModulePage = ({ id }) => {
-  const title = modules[parseInt(id)];
-  return (
-    <div className="content">
-      <h1 className="module-title">
-        Module {parseInt(id) + 1}: {title}
-      </h1>
-      <p className="module-description">
-        [This is where interactive content, code labs, and embedded simulations
-        will go. Include command line demos, lab environments, and quizzes.
-        Integrate VM-based scenarios with tools like Shodan, Burp Suite,
-        Wireshark, etc.]
-      </p>
-    </div>
-  );
+  console.log(id);
+  switch (parseInt(id)) {
+    case 1: {
+      return <Module1 title={modules[parseInt(id)]} />;
+    }
+  }
 };
 
 const App = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   const [profileOpen, setProfileOpen] = useState(false);
-  const menuRef = useRef(null)
+  const menuRef = useRef(null);
   console.log(user);
   console.log(user?.photoURL);
 
@@ -85,7 +74,7 @@ const App = () => {
         setProfileOpen(false);
       }
     };
-  
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -137,7 +126,10 @@ const App = () => {
                 </div>
                 <div>
                   {profileOpen && (
-                    <div ref={menuRef} className="fixed top-20 right-40 w-48 bg-white text-black p-1 rounded-md shadow-lg">
+                    <div
+                      ref={menuRef}
+                      className="fixed top-20 right-40 w-48 bg-white text-black p-1 rounded-md shadow-lg"
+                    >
                       {/* <div className="flex items-center gap-2">
                        Dark Mode
                       </div> */}
@@ -147,7 +139,7 @@ const App = () => {
                           await auth.signOut();
                           console.log("here");
                           localStorage.removeItem("user");
-                          setProfileOpen(false)
+                          setProfileOpen(false);
                           // await handleLogout();
                           setUser(null);
                         }}
@@ -183,7 +175,14 @@ const App = () => {
 
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/module/:id" element={<ModuleWrapper />} />
+            <Route
+              path="/module/:id"
+              element={
+                <ProtectedRoute user={user}>
+                  <ModuleWrapper />
+                </ProtectedRoute>
+              }
+            />
             {/* <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} /> */}
           </Routes>
@@ -202,6 +201,7 @@ const App = () => {
 
 const ModuleWrapper = () => {
   const id = window.location.pathname.split("/").pop();
+  console.log(id);
   return <ModulePage id={id} />;
 };
 
