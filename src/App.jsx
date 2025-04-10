@@ -2,14 +2,18 @@ import Button from "@mui/material/button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import LogoutIcon from "@mui/icons-material/Logout";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";``
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./App.css";
 import { handleGoogleLogin } from "./auth";
 import { auth, provider } from "./firebase";
-import Module1 from "./modules/Module1";
 import ProtectedRoute from "./components/ProtectedRoute";
 import modules from "./data/modules";
+import Module1 from "./modules/Module1";
+import Module2 from "./modules/Module2";
+import Module3 from "./modules/Module3";
+import Module4 from "./modules/Module4";
+import Module5 from "./modules/Module5";
 
 const Home = () => (
   <div className="content">
@@ -20,18 +24,35 @@ const Home = () => (
       through 14 interactive modules including real-world simulations, OSINT
       reconnaissance, Burp Suite testing, and incident response drills.
     </p>
-    <div className="grid">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {modules.map((module, index) => (
-        <Card key={index} className="card airy-card">
-          <CardContent>
-            <h2 className="card-title">Module {index + 1}</h2>
-            <p className="card-text">{module.title}</p>
-            <p className="card-summary">{module.summary}</p>
-            <Link to={`/module/${index + 1}`}>
-              <Button>Start Module</Button>
-            </Link>
-          </CardContent>
-        </Card>
+        <div
+          key={index}
+          className="group relative bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
+        >
+          <Link to={`/module/${index + 1}`} className="block h-full w-full">
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">
+              Module {index + 1}
+            </h2>
+            <p className="text-gray-600 mb-4">{module.title}</p>
+
+            <div className="relative">
+              <div className="text-blue-600 font-medium group-hover:-translate-y-2 transition-transform duration-300">
+                Learning Objectives
+              </div>
+              
+              {Array.isArray(module.objectives) && (
+                <div className="mt-2 max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out group-hover:max-h-[500px] group-hover:opacity-100">
+                  <ul className="list-disc ml-5 space-y-1 text-gray-700 text-sm">
+                    {module.objectives.map((obj, i) => (
+                      <li key={i}>{obj}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </Link>
+        </div>
       ))}
     </div>
   </div>
@@ -42,6 +63,18 @@ const ModulePage = ({ id }) => {
   switch (parseInt(id)) {
     case 1: {
       return <Module1 title={modules[parseInt(id)]} />;
+    }
+    case 2: {
+      return <Module2 title={modules[parseInt(id)]} />;
+    }
+    case 3: {
+      return <Module3 title={modules[parseInt(id)]} />;
+    }
+    case 4: {
+      return <Module4 title={modules[parseInt(id)]} />;
+    }
+    case 5: {
+      return <Module5 title={modules[parseInt(id)]} />;
     }
   }
 };
