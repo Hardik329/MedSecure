@@ -1,8 +1,12 @@
 import React from "react";
-import "./Module1.css";
 import Quiz from "../components/Quiz";
+import LearningObjectives from "../components/LearningObjectives";
+import Section from "../components/Section";
+import Table from "../components/Table";
+import HighlightBox from "../components/HighlightBox";
+import NextModuleCard from "../components/NextModuleCard";
 
-const Module1 = () => {
+const Module1 = ({title}) => {
   const vms = [
     { name: "Metasploitable 2", purpose: "General-purpose vulnerable VM" },
     { name: "OWASP Broken Web Apps", purpose: "Web app vulnerabilities" },
@@ -18,6 +22,14 @@ const Module1 = () => {
     { name: "Philips IntelliVue Monitor", note: "SNMP/firmware issues" },
     { name: "BLE Smart Glucometer", note: "Bluetooth replay attacks" },
     { name: "Generic PACS Server", note: "DICOM protocol exposure" },
+  ];
+
+  const objectives = [
+    "Understand what Medical IoT (MIoT) is and its applications in healthcare.",
+    "Identify the security risks associated with connected medical devices.",
+    "Recognize common vulnerabilities in Medical IoT environments.",
+    "Familiarize yourself with hands-on labs using vulnerable devices and virtual machines.",
+    "Learn about the importance of secure coding practices in MIoT.",
   ];
 
   const questions = [
@@ -42,48 +54,23 @@ const Module1 = () => {
       correctIndex: 1,
     },
     {
-        question: "Which of the following is a potential risk in Medical IoT?",
-        options: [
-          "Low Battery",
-          "Default Credentials",
-          "Expired Prescription",
-        ],
-        correctIndex: 1,
-      },
-    ]
+      question: "Which of the following is a potential risk in Medical IoT?",
+      options: ["Low Battery", "Default Credentials", "Expired Prescription"],
+      correctIndex: 1,
+    },
+  ];
 
   return (
     <div>
       <div className="bg-[#1c2538] h-40 flex items-center justify-center">
         <h1 className="text-4xl font-bold text-white">
-          Module 1: Introduction to Medical IoT
+          Module 1: {title}
         </h1>
       </div>
       <div className="max-w-5xl mx-auto px-6 py-10 text-gray-800">
-        <section className="module-section mb-4">
-          <h2>🎯 Learning Objectives</h2>
-          <ul className="list-disc list-inside pl-4 space-y-2 mb-6 ">
-            <li>
-              Understand what Medical IoT (MIoT) is and its applications in
-              healthcare.
-            </li>
-            <li>
-              Identify the security risks associated with connected medical
-              devices.
-            </li>
-            <li>
-              Recognize common vulnerabilities in Medical IoT environments.
-            </li>
-            <li>
-              Familiarize yourself with hands-on labs using vulnerable devices
-              and virtual machines.
-            </li>
-          </ul>
-        </section>
-        <section className="mb-10">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-2">
-            What is Medical IoT?
-          </h2>
+        <LearningObjectives objectives={objectives} />
+
+        <Section title="What is Medical IoT?">
           <p className="mb-4">
             The Medical Internet of Things (MIoT) refers to the connected
             ecosystem of medical devices, systems, and software that communicate
@@ -98,83 +85,43 @@ const Module1 = () => {
             <li>Picture Archiving and Communication Systems (PACS)</li>
             <li>Network-connected surgical robots</li>
           </ul>
-        </section>
+        </Section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-2">
-            Why is Medical IoT Risky?
-          </h2>
+        <Section title="Why is Medical IoT Risky?">
           <p className="mb-4">
             These devices often lack robust security due to legacy software,
             limited processing power, or poor design choices. The impact of a
             compromise can be life-threatening.
           </p>
-          <div className="bg-red-100 border-l-4 border-red-500  p-4 rounded-md">
-            <p>
-              <strong>Risks include:</strong>
-            </p>
+          <HighlightBox type="error" title="Risks include:">
             <ul className="list-disc list-inside pl-4">
               <li>Unauthorized access to patient data</li>
               <li>Tampering with dosage or device settings</li>
               <li>Ransomware affecting critical operations</li>
             </ul>
-          </div>
-        </section>
+          </HighlightBox>
+        </Section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-4">
-            Vulnerable Medical VMs
-          </h2>
-          <table className="w-full table-auto border border-gray-300">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="text-left px-4 py-2">VM</th>
-                <th className="text-left px-4 py-2">Purpose</th>
-              </tr>
-            </thead>
-            <tbody>
-              {vms.map((vm, index) => (
-                <tr key={index} className="border-t">
-                  <td className="px-4 py-2">{vm.name}</td>
-                  <td className="px-4 py-2">{vm.purpose}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </section>
+        <Section title="Vulnerable Medical VMs">
+          <Table
+            headers={["VM", "Purpose"]}
+            rows={vms.map((vm) => [vm.name, vm.purpose])}
+          />
+        </Section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-4">
-            Common Vulnerable IoT Devices
-          </h2>
-          <table className="w-full table-auto border border-gray-300">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="text-left px-4 py-2">Device</th>
-                <th className="text-left px-4 py-2">Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              {devices.map((device, index) => (
-                <tr key={index} className="border-t">
-                  <td className="px-4 py-2">{device.name}</td>
-                  <td className="px-4 py-2">{device.note}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </section>
+        <Section title="Common Vulnerable IoT Devices">
+          <Table
+            headers={["Device", "Notes"]}
+            rows={devices.map((device) => [device.name, device.note])}
+          />
+        </Section>
 
-        <section className="quiz mb-10">
-          <Quiz questions={questions}/>
-        </section>
+        <Quiz questions={questions} />
 
-        <div className="bg-green-100 p-4 border-l-4 border-green-500 rounded-md">
-          <p>
-            <strong>Next:</strong> Explore the Threat Landscape in Module 2 to
-            understand who might target medical IoT and why.
-          </p>
-        </div>
+        <NextModuleCard
+          nextModule="Module 2"
+          description="Explore the Threat Landscape in Module 2 to understand who might target medical IoT and why."
+        />
       </div>
     </div>
   );

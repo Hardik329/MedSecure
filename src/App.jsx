@@ -7,8 +7,10 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./App.css";
 import { handleGoogleLogin } from "./auth";
 import { auth, provider } from "./firebase";
-import Module1 from "./modules/Module1";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Module1 from "./modules/Module1";
+import Module6 from "./modules/Module6";
+import Module7 from "./modules/Module7";
 
 const modules = [
   "Introduction to Medical IoT",
@@ -54,10 +56,16 @@ const Home = () => (
 
 const ModulePage = ({ id }) => {
   console.log(id);
+  const Id = parseInt(id)-1
   switch (parseInt(id)) {
     case 1: {
-      return <Module1 title={modules[parseInt(id)]} />;
+      return <Module1 title={modules[Id]} />;
     }
+    case 6: 
+      return <Module6 title={modules[Id]} />;
+    case 7: 
+      return <Module7 title={modules[Id]} />;
+    
   }
 };
 
@@ -201,7 +209,6 @@ const App = () => {
 
 const ModuleWrapper = () => {
   const id = window.location.pathname.split("/").pop();
-  console.log(id);
   return <ModulePage id={id} />;
 };
 

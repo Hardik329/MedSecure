@@ -36,7 +36,7 @@ const Quiz = ({ questions }) => {
               {qIndex + 1}. {q.question}
             </p>
 
-            <div className="space-y-2">
+            <div className="space-y-2 px-4">
               {q.options.map((option, oIndex) => {
                 const isSelected = selectedAnswers[qIndex] === oIndex;
                 const isCorrect = q.correctIndex === oIndex;

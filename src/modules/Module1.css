@@ -20,20 +20,3 @@
     color: #34495e;
   }
   
-  .module-section ul,
-  .module-section ol {
-    padding-left: 1.5rem;
-    line-height: 1.6;
-  }
-  
-  .module-section ul li::marker {
-    /* color: #2ecc71; */
-  }
-  
-  .module-section pre {
-    background: #f0f0f0;
-    padding: 1rem;
-    border-radius: 6px;
-    overflow-x: auto;
-  }
-  
