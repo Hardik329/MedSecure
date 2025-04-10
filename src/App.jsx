@@ -12,23 +12,7 @@ import {
 import "./App.css";
 import { handleGoogleLogin,  } from "./auth";
 import { auth, provider } from "./firebase";
-
-const modules = [
-  "Introduction to Medical IoT",
-  "Threat Landscape",
-  "Network Security Basics",
-  "Device Hardening",
-  "OSINT & Shodan",
-  "Secure Data Management",
-  "Access Control",
-  "Web & API Testing",
-  "Password Security",
-  "Incident Response",
-  "Compliance & Monitoring",
-  "Security Culture",
-  "Hands-on Labs",
-  "Final Assessment",
-];
+import modules from "./data/modules";
 
 const Home = () => (
   <div className="content">
@@ -40,11 +24,12 @@ const Home = () => (
       reconnaissance, Burp Suite testing, and incident response drills.
     </p>
     <div className="grid">
-      {modules.map((title, index) => (
+      {modules.map((module, index) => (
         <Card key={index} className="card airy-card">
           <CardContent>
             <h2 className="card-title">Module {index + 1}</h2>
-            <p className="card-text">{title}</p>
+            <p className="card-text">{module.title}</p>
+            <p className="card-summary">{module.summary}</p>
             <Link to={`/module/${index}`}>
               <Button>Start Module</Button>
             </Link>
@@ -57,17 +42,54 @@ const Home = () => (
 
 const ModulePage = ({ id }) => {
   const title = modules[parseInt(id)];
+  const module = modules[index];
+  const renderModuleComponent = (index) => {
+    switch (index) {
+      case 0:
+        return <introCyberSec />;
+      case 1:
+        return <treatLandscape />;
+      case 2:
+        return <netSecBasics />;
+      case 3:
+        return <deviceHardening />;
+      case 4:
+        return <osintShodun />;
+      case 5:
+        return <secureDataManagement />;
+      case 6:
+        return <TreatLandscape />;
+      case 7:
+        return <TreatLandscape />;
+      case 8:
+        return <TreatLandscape />;
+      case 9:
+        return <TreatLandscape />;
+      case 10:
+        return <TreatLandscape />;
+      case 11:
+        return <TreatLandscape />;
+      case 12:
+        return <TreatLandscape />;
+      case 13:
+        return <TreatLandscape />;
+    }
+  }
   return (
     <div className="content">
       <h1 className="module-title">
         Module {parseInt(id) + 1}: {title}
       </h1>
-      <p className="module-description">
+      {/* <p className="module-description">
         [This is where interactive content, code labs, and embedded simulations
         will go. Include command line demos, lab environments, and quizzes.
         Integrate VM-based scenarios with tools like Shodan, Burp Suite,
         Wireshark, etc.]
-      </p>
+      </p> */}
+      <div
+        className="module-description"
+        dangerouslySetInnerHTML={{ __html: modulesContent[id].content }}
+        ></div>
     </div>
   );
 };
@@ -120,7 +142,10 @@ const App = () => {
         <main className="flex flex-col min-h-screen bg-[#f9f9fb]">
           <header className="top-nav flex w-full justify-between items-center px-40 h-25 ">
             <div className="left">
-              <h1 className="top-nav-title font-bold text-xl">MedSecure</h1>
+              <h1 className="top-nav-title flex font-bold text-xl">
+                <div className="mr-1"><img className="logo" src="src/images/Logo.png" alt="Logo" /></div>
+                <div className="ml-1">MedSecure</div>
+              </h1>
             </div>
             {user ? (
               <div>
