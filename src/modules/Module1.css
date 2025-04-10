@@ -1,0 +1,39 @@
+
+  .module-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  .module-section {
+    padding: 1.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    background-color: #fdfdfd;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .module-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #34495e;
+  }
+  
+  .module-section ul,
+  .module-section ol {
+    padding-left: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  .module-section ul li::marker {
+    /* color: #2ecc71; */
+  }
+  
+  .module-section pre {
+    background: #f0f0f0;
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+  }
+  
