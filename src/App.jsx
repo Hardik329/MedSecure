@@ -1,13 +1,13 @@
-import Button from "@mui/material/button";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
+
 import LogoutIcon from "@mui/icons-material/Logout";
-import React, { useState, useEffect, useRef } from "react";``
+import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./App.css";
+import logo from "./images/Logo.png";
 import { handleGoogleLogin } from "./auth";
 import { auth, provider } from "./firebase";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { ToastContainer, toast } from "react-toastify";
 import modules from "./data/modules";
 import Module1 from "./modules/Module1";
 import Module2 from "./modules/Module2";
@@ -17,73 +17,94 @@ import Module5 from "./modules/Module5";
 import Module6 from "./modules/Module6";
 import Module7 from "./modules/Module7";
 
-const Home = () => (
-  <div className="content">
-    <h1 className="title">Cybersecurity in Medical IoT</h1>
-    <p className="description">
-      Welcome to a hands-on training and awareness program designed for medical
-      professionals, biomedical engineers, and healthcare IT staff. Navigate
-      through 14 interactive modules including real-world simulations, OSINT
-      reconnaissance, Burp Suite testing, and incident response drills.
-    </p>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {modules.map((module, index) => (
-        <div
-          key={index}
-          className="group relative bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
-        >
-          <Link to={`/module/${index + 1}`} className="block h-full w-full">
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">
-              Module {index + 1}
-            </h2>
-            <p className="text-gray-600 mb-4">{module.title}</p>
+const Home = ({user}) => {
+  const displayError = (message) => {
+    console.log(message);
+    if(user) return;
+    toast.error(message, {
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
 
-            <div className="relative">
-              <div className="text-blue-600 font-medium group-hover:-translate-y-2 transition-transform duration-300">
-                Learning Objectives
-              </div>
-              
-              {Array.isArray(module.objectives) && (
-                <div className="mt-2 max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out group-hover:max-h-[500px] group-hover:opacity-100">
-                  <ul className="list-disc ml-5 space-y-1 text-gray-700 text-sm">
-                    {module.objectives.map((obj, i) => (
-                      <li key={i}>{obj}</li>
-                    ))}
-                  </ul>
+  return (
+    <div className="content">
+      <h1 className="title">Cybersecurity in Medical IoT</h1>
+      <p className="description">
+        Welcome to a hands-on training and awareness program designed for
+        medical professionals, biomedical engineers, and healthcare IT staff.
+        Navigate through these interactive modules to know about real-world
+        risks and vulnerabilities and learn how to prevent them .
+      </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {modules.map((module, index) => (
+          <div
+            key={index}
+            className="group relative bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
+          >
+            <Link
+              onClick={() =>
+                displayError("Please login to access the content.")
+              }
+              to={`/module/${index + 1}`}
+              className="block h-full w-full"
+            >
+              <h2 className="text-xl font-semibold text-gray-800 mb-2">
+                Module {index + 1}
+              </h2>
+              <p className="text-gray-600 mb-4">{module.title}</p>
+
+              <div className="relative">
+                <div className="text-blue-600 font-medium group-hover:-translate-y-2 transition-transform duration-300">
+                  Learning Objectives
                 </div>
-              )}
-            </div>
-          </Link>
-        </div>
-      ))}
+
+                {Array.isArray(module.objectives) && (
+                  <div className="mt-2 max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out group-hover:max-h-[500px] group-hover:opacity-100">
+                    <ul className="list-disc ml-5 space-y-1 text-gray-700 text-sm">
+                      {module.objectives.map((obj, i) => (
+                        <li key={i}>{obj}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const ModulePage = ({ id }) => {
   console.log(id);
-  const Id = parseInt(id)-1
-  switch (parseInt(id)) {
+  const Id = parseInt(id) - 1;
+  switch (Id + 1) {
     case 1: {
-      return <Module1 title={modules[Id]} />;
+      return <Module1 title={modules[Id].title} />;
     }
     case 2: {
-      return <Module2 title={modules[parseInt(id)]} />;
+      return <Module2 title={modules[Id].title} />;
     }
     case 3: {
-      return <Module3 title={modules[parseInt(id)]} />;
+      return <Module3 title={modules[Id].title} />;
     }
     case 4: {
-      return <Module4 title={modules[parseInt(id)]} />;
+      return <Module4 title={modules[Id].title} />;
     }
     case 5: {
-      return <Module5 title={modules[parseInt(id)]} />;
+      return <Module5 title={modules[Id].title} />;
     }
-    case 6: 
-      return <Module6 title={modules[Id]} />;
-    case 7: 
-      return <Module7 title={modules[Id]} />;
-    
+    case 6:
+      return <Module6 title={modules[Id].title} />;
+    case 7:
+      return <Module7 title={modules[Id].title} />;
   }
 };
 
@@ -131,12 +152,15 @@ const App = () => {
 
   return (
     <Router>
+      <ToastContainer />
       <div className={`app-wrapper`}>
         <main className="flex flex-col min-h-screen bg-[#f9f9fb]">
           <header className="top-nav flex w-full justify-between items-center px-40 h-25 ">
             <div className="left">
               <h1 className="top-nav-title flex font-bold text-xl">
-                <div className="mr-1"><img className="logo" src="src/images/Logo.png" alt="Logo" /></div>
+                <div className="mr-1">
+                  <img className="logo" src={logo} alt="Logo" />
+                </div>
                 <div className="ml-1">MedSecure</div>
               </h1>
             </div>
@@ -203,7 +227,7 @@ const App = () => {
           </header>
 
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home user={user}/>} />
             <Route
               path="/module/:id"
               element={

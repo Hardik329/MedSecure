@@ -1,7 +1,9 @@
 import React from "react";
 import Quiz from "../components/Quiz";
+import TerminalComponent from "../components/Terminal";
 
 const Module4 = () => {
+  const [showTerminal, setShowTerminal] = React.useState(false);
   const questions = [
     {
       question: "What is the goal of 'device hardening'?",
@@ -34,7 +36,6 @@ const Module4 = () => {
       correctIndex: 1,
     },
   ];
-  
 
   return (
     <div>
@@ -54,14 +55,21 @@ const Module4 = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-bold text-gray-800 mb-3">What is Device Hardening?</h2>
+          <h2 className="text-2xl font-bold text-gray-800 mb-3">
+            What is Device Hardening?
+          </h2>
           <p className="text-gray-700">
-            Device hardening refers to the process of securing a device by reducing its attack surface. This includes turning off unnecessary services, applying patches, setting strong authentication, and configuring firewalls.
+            Device hardening refers to the process of securing a device by
+            reducing its attack surface. This includes turning off unnecessary
+            services, applying patches, setting strong authentication, and
+            configuring firewalls.
           </p>
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold text-gray-700 mb-2">🧰 Secure Your Device – A Checklist</h2>
+          <h2 className="text-xl font-semibold text-gray-700 mb-2">
+            🧰 Secure Your Device – A Checklist
+          </h2>
           <ul className="space-y-2">
             {[
               "🔐 Change default usernames and passwords",
@@ -71,7 +79,10 @@ const Module4 = () => {
               "🚫 Disable unnecessary Bluetooth/Wi-Fi access",
               "📝 Set up logging and auditing",
             ].map((item, i) => (
-              <li key={i} className="bg-white rounded-md shadow-md px-4 py-2 border flex items-center space-x-2">
+              <li
+                key={i}
+                className="bg-white rounded-md shadow-md px-4 py-2 border flex items-center space-x-2"
+              >
                 <input type="checkbox" className="h-5 w-5 text-green-600" />
                 <span>{item}</span>
               </li>
@@ -80,7 +91,9 @@ const Module4 = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold text-gray-700 mb-2">🔁 Before vs After Hardening</h2>
+          <h2 className="text-xl font-semibold text-gray-700 mb-2">
+            🔁 Before vs After Hardening
+          </h2>
           <div className="grid md:grid-cols-2 gap-4">
             <div className="bg-red-100 p-4 rounded-lg">
               <h3 className="font-bold text-red-600 mb-2">Before</h3>
@@ -104,8 +117,12 @@ const Module4 = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold text-gray-700 mb-2">🧩 Spot the Misconfig</h2>
-          <p className="mb-2 text-gray-600">What’s wrong with this device config?</p>
+          <h2 className="text-xl font-semibold text-gray-700 mb-2">
+            🧩 Spot the Misconfig
+          </h2>
+          <p className="mb-2 text-gray-600">
+            What’s wrong with this device config?
+          </p>
           <div className="bg-black text-green-400 font-mono p-4 rounded-md overflow-x-auto">
             {`{
           "username": "admin",
@@ -116,10 +133,13 @@ const Module4 = () => {
         }`}
           </div>
           <div className="mt-3 text-gray-700">
-            ❓<strong>Your Turn:</strong> What are the red flags? Think and check below!
+            ❓<strong>Your Turn:</strong> What are the red flags? Think and
+            check below!
           </div>
           <details className="mt-2">
-            <summary className="cursor-pointer text-blue-600 underline">💡 View Answer</summary>
+            <summary className="cursor-pointer text-blue-600 underline">
+              💡 View Answer
+            </summary>
             <ul className="list-disc list-inside mt-2 text-red-600 space-y-1">
               <li>Weak default password</li>
               <li>FTP enabled (insecure)</li>
@@ -129,11 +149,29 @@ const Module4 = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold text-gray-700 mb-2">🧪 Hands-on Challenge</h2>
-          <p className="mb-4">Use our custom vulnerable VM to practice device hardening. Try fixing weak passwords, disabling services, and configuring a basic firewall using <code>ufw</code>.</p>
+          <h2 className="text-xl font-semibold text-gray-700 mb-2">
+            🧪 Hands-on Challenge
+          </h2>
+          <p className="mb-4">
+            Use our custom vulnerable VM to practice device hardening. Try
+            fixing weak passwords, disabling services, and configuring a basic
+            firewall using <code>ufw</code>.
+          </p>
           <div className="bg-yellow-100 p-3 rounded-lg border-l-4 border-yellow-400">
-            🔍 Start the VM named <code>hardening-lab</code> in your virtual lab.
+            🔍 Start the VM named <code>hardening-lab</code> in your virtual
+            lab.
           </div>
+          <button
+            onClick={() => setShowTerminal((prev) => !prev)}
+            className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200"
+          >
+            {showTerminal ? "Stop Terminal" : "Start Terminal"}
+          </button>
+          {showTerminal && (
+            <div className="mt-4 p-4">
+              <TerminalComponent />
+            </div>
+          )}
         </section>
 
         <section className="quiz mb-10">
@@ -142,7 +180,8 @@ const Module4 = () => {
 
         <div className="bg-green-100 p-4 border-l-4 border-green-500 rounded-md">
           <p>
-            <strong>Next:</strong> Use OSINT & Shodan to assess exposure in Module 5.
+            <strong>Next:</strong> Use OSINT & Shodan to assess exposure in
+            Module 5.
           </p>
         </div>
       </div>

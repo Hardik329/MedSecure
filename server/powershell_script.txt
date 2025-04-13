@@ -1,0 +1,28 @@
+
+//   const shell = spawn("powershell.exe");
+//   shell.on("error", (error) => {
+//     console.error("Error spawning shell:", error);
+//     ws.close();
+//   });
+
+//   shell.on("exit", (code) => {
+//     console.log("Shell exited with code:", code);
+//     ws.close();
+//   });
+
+//   shell.stdout.on("data", (data) => {
+//     ws.send(data.toString());
+//   });
+
+//   shell.stderr.on("data", (data) => {
+//     ws.send(data.toString());
+//   });
+
+//   ws.on("message", (message) => {
+//     console.log("Received:", message);
+//     shell.stdin.write(message);
+//   });
+//   ws.on("close", () => {
+//     shell.kill();
+//     console.log("Client disconnected");
+//   });
