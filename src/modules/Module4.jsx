@@ -153,14 +153,14 @@ const Module4 = () => {
             🧪 Hands-on Challenge
           </h2>
           <p className="mb-4">
-            Use our custom vulnerable VM to practice device hardening. Try
+            Use our custom kali VM to practice device hardening. Try
             fixing weak passwords, disabling services, and configuring a basic
             firewall using <code>ufw</code>.
           </p>
-          <div className="bg-yellow-100 p-3 rounded-lg border-l-4 border-yellow-400">
+          {/* <div className="bg-yellow-100 p-3 rounded-lg border-l-4 border-yellow-400">
             🔍 Start the VM named <code>hardening-lab</code> in your virtual
             lab.
-          </div>
+          </div> */}
           <button
             onClick={() => setShowTerminal((prev) => !prev)}
             className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200"

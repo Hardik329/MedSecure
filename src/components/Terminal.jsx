@@ -15,6 +15,7 @@ const TerminalComponent = () => {
   let firstTry;
 
   const connectWebSocket = () => {
+    console.log(socket.current);
     try {
       socket.current = new WebSocket("ws://localhost:8080");
 
@@ -67,6 +68,7 @@ const TerminalComponent = () => {
     );
     term.current.write("Please wait while the kali container loads...\r\n");
     firstTry = true;
+    console.log("Creating container")
     connectWebSocket();
 
     term.current.onKey(({ key, domEvent }) => {

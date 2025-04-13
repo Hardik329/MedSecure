@@ -1,4 +1,4 @@
-import "../modules/Module1.css";
+import "./LearningObjectives.css"; 
 
 export default function LearningObjectives({ objectives }) {
   return (
