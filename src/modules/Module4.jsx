@@ -1,134 +1,192 @@
 import React from "react";
-import LearningObjectives from "../components/LearningObjectives";
 import Quiz from "../components/Quiz";
-import Section from "../components/Section";
-import Table from "../components/Table";
-import HighlightBox from "../components/HighlightBox";
-import NextModuleCard from "../components/NextModuleCard";
-import {ProgressBar} from "../components/ProgressBar";
+import TerminalComponent from "../components/Terminal";
 
-const Module4 = ({title}) => {
-  const objectives = [
-    "Understand the concept and importance of device hardening",
-    "Learn specific techniques for hardening medical IoT devices",
-    "Explore best practices and frameworks like CIS Benchmarks",
-    "Assess hardening status using checklists or tools",
-  ];
-
-  const hardeningSteps = [
-    { step: "Remove Unnecessary Services", description: "Disable unused services and ports to reduce attack surface." },
-    { step: "Change Default Credentials", description: "Default usernames and passwords should be changed immediately." },
-    { step: "Apply Patches and Updates", description: "Regular updates address known vulnerabilities." },
-    { step: "Configure Firewalls", description: "Limit incoming and outgoing traffic based on strict rules." },
-    { step: "Enable Logging and Auditing", description: "Logs help detect anomalies and breaches." },
-    { step: "Use Antivirus/EDR Tools", description: "Install security tools to prevent and detect malware." },
-    { step: "Set Permissions Properly", description: "Use least privilege access control." },
-    { step: "Encrypt Data", description: "Ensure both data at rest and in transit is encrypted." },
-  ];
-
-  const quizQuestions = [
+const Module4 = () => {
+  const [showTerminal, setShowTerminal] = React.useState(false);
+  const questions = [
     {
-      question: "Why is device hardening especially important in Medical IoT?",
+      question: "What is the goal of 'device hardening'?",
       options: [
-        "To save battery life",
-        "To prevent physical theft",
-        "To reduce the attack surface of vulnerable systems",
-        "To make the device waterproof",
+        "To improve display quality",
+        "To prevent physical damage to devices",
+        "To reduce attack surface by securing configurations and settings",
+        "To improve software animations",
       ],
-      answer: "To reduce the attack surface of vulnerable systems",
+      correctIndex: 2,
     },
     {
-      question: "Which of the following is NOT a common device hardening technique?",
+      question: "Which of these is a best practice in device hardening?",
       options: [
-        "Disabling unnecessary services",
         "Using default admin credentials",
-        "Installing patches",
-        "Configuring firewalls",
+        "Disabling unused services and ports",
+        "Allowing unrestricted remote access",
+        "Skipping firmware updates",
       ],
-      answer: "Using default admin credentials",
+      correctIndex: 1,
     },
     {
-      question: "What is the purpose of enabling logging and auditing?",
+      question: "What does firmware signing help prevent?",
       options: [
-        "Improve performance",
-        "Enable password resets",
-        "Track user and system activity for security",
-        "Prevent overheating",
+        "Accidental system reboots",
+        "Installation of unauthorized firmware and tampering",
+        "Memory overflow",
+        "Poor device performance",
       ],
-      answer: "Track user and system activity for security",
-    },
-    {
-      question: "What does the CIS Benchmark provide?",
-      options: [
-        "A gaming leaderboard",
-        "A set of guidelines for system hardening",
-        "Hardware specifications",
-        "Encryption keys",
-      ],
-      answer: "A set of guidelines for system hardening",
+      correctIndex: 1,
     },
   ];
 
   return (
-    <div className="">
+    <div>
       <div className="bg-[#1c2538] h-40 flex items-center justify-center">
         <h1 className="text-4xl font-bold text-white">
-          Module 1: {title}
+          Module 4: Device Hardening
         </h1>
       </div>
-      <div>
-        <ProgressBar/>
-      </div>
-      <div className="p-6 max-w-5xl mx-auto">
-        <LearningObjectives objectives={objectives} />
+      <div className="max-w-5xl mx-auto px-6 py-10 text-gray-800">
+        <section className="module-section mb-4">
+          <h2>🎯 Learning Objectives</h2>
+          <ul className="list-disc list-inside pl-4 space-y-2 mb-6">
+            <li>Apply hardening techniques to medical devices.</li>
+            <li>Update and patch firmware securely.</li>
+            <li>Enable access controls and encryption.</li>
+          </ul>
+        </section>
 
-        <Section title="Why Device Hardening?">
-          <p>
-            Device hardening is the process of securing a system by reducing its
-            surface of vulnerability. Medical IoT devices often run on lightweight,
-            outdated operating systems and are deployed in critical environments,
-            making hardening vital to prevent exploitation.
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-gray-800 mb-3">
+            What is Device Hardening?
+          </h2>
+          <p className="text-gray-700">
+            Device hardening refers to the process of securing a device by
+            reducing its attack surface. This includes turning off unnecessary
+            services, applying patches, setting strong authentication, and
+            configuring firewalls.
           </p>
-        </Section>
+        </section>
 
-        <Section title="Common Device Hardening Steps">
-          <Table
-            headers={["Step", "Description"]}
-            rows={hardeningSteps.map((step) => [step.step, step.description])}
-          />
-        </Section>
+        <section className="mb-10">
+          <h2 className="text-xl font-semibold text-gray-700 mb-2">
+            🧰 Secure Your Device – A Checklist
+          </h2>
+          <ul className="space-y-2">
+            {[
+              "🔐 Change default usernames and passwords",
+              "🛑 Disable unused ports and services",
+              "📦 Regularly apply firmware/software updates",
+              "🛡 Enable device firewalls",
+              "🚫 Disable unnecessary Bluetooth/Wi-Fi access",
+              "📝 Set up logging and auditing",
+            ].map((item, i) => (
+              <li
+                key={i}
+                className="bg-white rounded-md shadow-md px-4 py-2 border flex items-center space-x-2"
+              >
+                <input type="checkbox" className="h-5 w-5 text-green-600" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
 
-        <Section title="CIS Benchmarks and Hardening Guides">
-          <p>
-            The <strong>Center for Internet Security (CIS)</strong> provides
-            widely accepted hardening standards for various platforms, including
-            embedded Linux, Windows, and cloud environments. Following these
-            benchmarks ensures baseline security across systems.
+        <section className="mb-10">
+          <h2 className="text-xl font-semibold text-gray-700 mb-2">
+            🔁 Before vs After Hardening
+          </h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-red-100 p-4 rounded-lg">
+              <h3 className="font-bold text-red-600 mb-2">Before</h3>
+              <ul className="list-disc list-inside text-red-700 space-y-1">
+                <li>Default credentials enabled</li>
+                <li>Open SSH & FTP ports</li>
+                <li>No password policy</li>
+                <li>Unpatched firmware</li>
+              </ul>
+            </div>
+            <div className="bg-green-100 p-4 rounded-lg">
+              <h3 className="font-bold text-green-700 mb-2">After</h3>
+              <ul className="list-disc list-inside text-green-800 space-y-1">
+                <li>Strong passwords with 90-day rotation</li>
+                <li>Only HTTPS/SSH enabled</li>
+                <li>Password length ≥ 12 characters</li>
+                <li>Latest firmware version 4.3.7</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-xl font-semibold text-gray-700 mb-2">
+            🧩 Spot the Misconfig
+          </h2>
+          <p className="mb-2 text-gray-600">
+            What’s wrong with this device config?
           </p>
-        </Section>
+          <div className="bg-black text-green-400 font-mono p-4 rounded-md overflow-x-auto">
+            {`{
+          "username": "admin",
+          "password": "admin123",
+          "ssh_enabled": true,
+          "ftp_enabled": true,
+          "firewall_status": "disabled"
+        }`}
+          </div>
+          <div className="mt-3 text-gray-700">
+            ❓<strong>Your Turn:</strong> What are the red flags? Think and
+            check below!
+          </div>
+          <details className="mt-2">
+            <summary className="cursor-pointer text-blue-600 underline">
+              💡 View Answer
+            </summary>
+            <ul className="list-disc list-inside mt-2 text-red-600 space-y-1">
+              <li>Weak default password</li>
+              <li>FTP enabled (insecure)</li>
+              <li>Firewall is turned off</li>
+            </ul>
+          </details>
+        </section>
 
-        <Section title="Real-World Case Study">
-          <HighlightBox>
-            <strong>Case: Infusion Pump Vulnerability</strong>
-            <p>
-              A study found that an infusion pump had hardcoded credentials and
-              unnecessary open ports. Attackers could exploit these to remotely
-              alter drug dosages. Simple hardening techniques like disabling unused
-              ports and setting strong credentials could have prevented this.
-            </p>
-          </HighlightBox>
-        </Section>
+        <section className="mb-10">
+          <h2 className="text-xl font-semibold text-gray-700 mb-2">
+            🧪 Hands-on Challenge
+          </h2>
+          <p className="mb-4">
+            Use our custom kali VM to practice device hardening. Try
+            fixing weak passwords, disabling services, and configuring a basic
+            firewall using <code>ufw</code>.
+          </p>
+          {/* <div className="bg-yellow-100 p-3 rounded-lg border-l-4 border-yellow-400">
+            🔍 Start the VM named <code>hardening-lab</code> in your virtual
+            lab.
+          </div> */}
+          <button
+            onClick={() => setShowTerminal((prev) => !prev)}
+            className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200"
+          >
+            {showTerminal ? "Stop Terminal" : "Start Terminal"}
+          </button>
+          {showTerminal && (
+            <div className="mt-4 p-4">
+              <TerminalComponent />
+            </div>
+          )}
+        </section>
 
-        <Quiz questions={quizQuestions} />
+        <section className="quiz mb-10">
+          <Quiz questions={questions} />
+        </section>
 
-        <NextModuleCard
-          title="OSINT & Shodan"
-          description="Explore how attackers gather intelligence on medical devices and networks using open-source tools."
-          link="/modules/osint-shodan"
-        />
+        <div className="bg-green-100 p-4 border-l-4 border-green-500 rounded-md">
+          <p>
+            <strong>Next:</strong> Use OSINT & Shodan to assess exposure in
+            Module 5.
+          </p>
+        </div>
       </div>
     </div>
   );
-}
+};
 
-export default Module4;
+export default Module4;
