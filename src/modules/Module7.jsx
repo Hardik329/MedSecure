@@ -5,6 +5,7 @@ import Section from "../components/Section";
 import Table from "../components/Table";
 import HighlightBox from "../components/HighlightBox";
 import NextModuleCard from "../components/NextModuleCard";
+import { ProgressBar } from "../components/ProgressBar";
 
 const Module7 = () => {
   const objectives = [

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { auth, provider } from "../firebase";
 import {
   getRedirectResult,
-//   signInWithPopup,
   signInWithRedirect,
 } from "firebase/auth";
 
@@ -21,6 +20,22 @@ export default function Login() {
       const user = result.user;
       console.log("Logged in:", user.displayName);
       localStorage.setItem("user", JSON.stringify(user));
+      // const userDocRef = doc(db, "userInfo", user.uid);
+      // const userDoc = await getDoc(userDocRef);
+
+      // console.log(userDoc);
+
+      // if (!userDoc.exists()) {
+      //   await setDoc(userDocRef, {
+      //     email: user.email,
+      //     displayName: user.displayName,
+      //     moduleProgress: {},
+      //   });
+      //   console.log("New user created in Firestore");
+      // } else {
+      //   console.log("User already exists in Firestore");
+      // }
+
       navigate("/");
     } catch (error) {
       console.error("Login error:", error);

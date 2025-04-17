@@ -1,2 +1,6 @@
 @import "tailwindcss";
 
+:root {
+  --darkblue-bg: #1c2538;
+  --green-progress: #a3ea2a;
+}

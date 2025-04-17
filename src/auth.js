@@ -1,5 +1,6 @@
 import { signInWithPopup, signOut } from "firebase/auth";
-import { auth, provider } from "./firebase";
+import { auth, db, provider } from "./firebase";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 export const handleGoogleLogin = async () => {
   try {
@@ -7,6 +8,20 @@ export const handleGoogleLogin = async () => {
     const user = result.user;
     console.log("User signed in via popup:", user);
     localStorage.setItem("user", JSON.stringify(user));
+
+    const userDocRef = doc(db, "userInfo", user.email);
+    const userDoc = await getDoc(userDocRef);
+
+    if (!userDoc.exists()) {
+      await setDoc(userDocRef, {
+        email: user.email,
+        displayName: user.displayName,
+        moduleProgress: {},
+      });
+      console.log("New user created in Firestore");
+    } else {
+      console.log("User already exists in Firestore");
+    }
     return user;
   } catch (error) {
     console.error("Login error:", error);

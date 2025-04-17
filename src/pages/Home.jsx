@@ -1,9 +1,12 @@
-
 import { toast } from "react-toastify";
 
 import { Link, useParams } from "react-router-dom";
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import modules from "../data/modules";
+import CircularProgress from "@mui/material/CircularProgress";
+import { ProgressCircle } from "../components/ProgressBar";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchModuleProgress } from "../redux/moduleProgressSlice";
 
 // Lazy load each module
 const Module1 = lazy(() => import("../modules/Module1"));
@@ -28,16 +31,21 @@ const ModulePage = ({ id }) => {
   const index = parseInt(id, 10) - 1;
   const SelectedModule = moduleComponents[index];
 
-  if (!SelectedModule) return <p className="text-center mt-10">Module not found</p>;
+  if (!SelectedModule)
+    return <p className="text-center mt-10">Module not found</p>;
 
   return (
-    <Suspense fallback={<p className="text-center mt-10">Loading module...</p>}>
+    <Suspense
+      fallback={
+        <p className="text-center mt-10">
+          <CircularProgress />
+        </p>
+      }
+    >
       <SelectedModule title={modules[index].title} />
     </Suspense>
   );
 };
-
-
 
 export const ModuleWrapper = () => {
   const { id } = useParams();
@@ -45,6 +53,15 @@ export const ModuleWrapper = () => {
 };
 
 const Home = ({ user }) => {
+  const data = useSelector((state) => state.moduleProgress);
+  console.log(data);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (user?.email) dispatch(fetchModuleProgress(user.email));
+  }, [dispatch, user?.email]);
+
   const displayError = (message) => {
     console.log(message);
     if (user) return;
@@ -81,9 +98,12 @@ const Home = ({ user }) => {
               to={`/module/${index + 1}`}
               className="block h-full w-full"
             >
-              <h2 className="text-xl font-semibold text-gray-800 mb-2">
-                Module {index + 1}
-              </h2>
+              <div className="flex justify-between">
+                <h2 className=" text-xl font-semibold text-gray-800 mb-2">
+                  Module {index + 1}
+                </h2>
+                <ProgressCircle moduleName={`module${index + 1}`} />
+              </div>
               <p className="text-gray-600 mb-4">{module.title}</p>
 
               <div className="relative">

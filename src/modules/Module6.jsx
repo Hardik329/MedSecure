@@ -5,9 +5,9 @@ import Section from "../components/Section";
 import Table from "../components/Table";
 import HighlightBox from "../components/HighlightBox";
 import NextModuleCard from "../components/NextModuleCard";
+import { ProgressBar } from "../components/ProgressBar";
 
 const Module6 = ({ title }) => {
-  
   const objectives = [
     "Understand the lifecycle of sensitive healthcare data.",
     "Learn encryption best practices for data at rest and in transit.",
@@ -115,15 +115,15 @@ const Module6 = ({ title }) => {
         </Section>
 
         <Section title="🛠️ Hands-On Task">
-        <ul className="list-disc list-inside space-y-1">
-          <li>Use OpenSSL to encrypt and decrypt a test patient record.</li>
-          <li>
-            Configure a sample IoT device to use TLS for data transmission.
-          </li>
-          <li>
-            Simulate a HIPAA audit using an open-source compliance checker.
-          </li>
-        </ul>
+          <ul className="list-disc list-inside space-y-1">
+            <li>Use OpenSSL to encrypt and decrypt a test patient record.</li>
+            <li>
+              Configure a sample IoT device to use TLS for data transmission.
+            </li>
+            <li>
+              Simulate a HIPAA audit using an open-source compliance checker.
+            </li>
+          </ul>
         </Section>
 
         <Quiz questions={questions} />

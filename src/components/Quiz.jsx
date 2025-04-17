@@ -1,22 +1,59 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import {
+  fetchModuleProgress,
+  updateModuleProgress,
+} from "../redux/moduleProgressSlice";
 
 const Quiz = ({ questions }) => {
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const moduleName = `module${id}`;
+
+  const data = useSelector((state) => state.moduleProgress[moduleName] || {});
+
+  const email = JSON.parse(localStorage.getItem("user")).email;
+
   const [selectedAnswers, setSelectedAnswers] = useState(
     Array(questions.length).fill(null)
   );
 
-  const handleOptionSelect = (qIndex, optionIndex) => {
-    if (!selectedAnswers[qIndex]) {
-      const updated = [...selectedAnswers];
-      updated[qIndex] = optionIndex;
-      setSelectedAnswers((prev) => {
-        if (prev[qIndex] !== null) {
-          return prev;
-        }
+  useEffect(() => {
+    dispatch(fetchModuleProgress(email));
+  }, [dispatch, email]);
 
-        return updated;
-      });
+  useEffect(() => {
+    if (data.quizOptions) {
+      setSelectedAnswers(data.quizOptions);
     }
+  }, [data.quizOptions]);
+
+  const handleOptionSelect = (qIndex, optionIndex) => {
+    setSelectedAnswers((prev) => {
+      if (prev[qIndex] !== null) {
+        return prev;
+      }
+      const updated = [...prev];
+      updated[qIndex] = optionIndex;
+      let progress = 100;
+      updated.forEach((answer) => {
+        if (answer === null) progress = 0;
+      });
+
+      dispatch(
+        updateModuleProgress({
+          email,
+          progress,
+          moduleName,
+          data: {
+            quizOptions: updated,
+          },
+        })
+      );
+
+      return updated;
+    });
   };
 
   return (

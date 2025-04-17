@@ -5,6 +5,7 @@ import Section from "../components/Section";
 import Table from "../components/Table";
 import HighlightBox from "../components/HighlightBox";
 import NextModuleCard from "../components/NextModuleCard";
+import { ProgressBar } from "../components/ProgressBar";
 
 const Module1 = ({title}) => {
   const vms = [
@@ -66,6 +67,9 @@ const Module1 = ({title}) => {
         <h1 className="text-4xl font-bold text-white">
           Module 1: {title}
         </h1>
+      </div>
+      <div>
+        <ProgressBar/>
       </div>
       <div className="max-w-5xl mx-auto px-6 py-10 text-gray-800">
         <LearningObjectives objectives={objectives} />

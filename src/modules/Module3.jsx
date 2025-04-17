@@ -1,5 +1,6 @@
 import React from "react";
 import Quiz from "../components/Quiz";
+import { ProgressBar } from "../components/ProgressBar";
 
 const Module3 = () => {
   const questions = [
@@ -14,12 +15,14 @@ const Module3 = () => {
       correctIndex: 2,
     },
     {
-      question: "Which protocol should be avoided when sending sensitive patient data?",
+      question:
+        "Which protocol should be avoided when sending sensitive patient data?",
       options: ["HTTPS", "FTPS", "Telnet", "SFTP"],
       correctIndex: 2,
     },
     {
-      question: "What is the primary purpose of a firewall in a hospital network?",
+      question:
+        "What is the primary purpose of a firewall in a hospital network?",
       options: [
         "To provide Wi-Fi to patients",
         "To cool down data centers",
@@ -28,7 +31,7 @@ const Module3 = () => {
       ],
       correctIndex: 2,
     },
-  ];  
+  ];
 
   return (
     <div>
@@ -63,31 +66,48 @@ const Module3 = () => {
             Anatomy of a Network Packet
           </h2>
           <p className="mb-4">
-            Understanding packet structure is key to mastering network security. Each packet carries data 
-            with layers of information that routers and firewalls analyze.
+            Understanding packet structure is key to mastering network security.
+            Each packet carries data with layers of information that routers and
+            firewalls analyze.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            {["Ethernet Header", "IP Header", "TCP/UDP Header", "Payload"].map((layer, idx) => (
-              <div key={idx} className="bg-blue-100 text-blue-800 p-4 rounded-xl shadow-md">
-                {layer}
-              </div>
-            ))}
+            {["Ethernet Header", "IP Header", "TCP/UDP Header", "Payload"].map(
+              (layer, idx) => (
+                <div
+                  key={idx}
+                  className="bg-blue-100 text-blue-800 p-4 rounded-xl shadow-md"
+                >
+                  {layer}
+                </div>
+              )
+            )}
           </div>
         </section>
-        
+
         <section className="mb-10">
           <h2 className="text-2xl font-semibold text-gray-700 mb-2">
             🧠 Threat Scenario: A Suspicious Packet Detected
           </h2>
           <p className="mb-4">
-            Imagine your hospital firewall flags a packet for inspection. Here's what your IDS (Intrusion Detection System) sees:
+            Imagine your hospital firewall flags a packet for inspection. Here's
+            what your IDS (Intrusion Detection System) sees:
           </p>
           <div className="bg-gray-100 rounded-lg p-4">
-            <div className="mb-2"><strong>Source IP:</strong> 192.168.4.23</div>
-            <div className="mb-2"><strong>Destination IP:</strong> 10.0.0.4</div>
-            <div className="mb-2"><strong>Protocol:</strong> TCP</div>
-            <div className="mb-2"><strong>Payload:</strong> `rm -rf /` (Potential Command Injection)</div>
-            <div className="text-red-600 font-bold mt-2">⚠️ ALERT: Command Injection Attempt Detected!</div>
+            <div className="mb-2">
+              <strong>Source IP:</strong> 192.168.4.23
+            </div>
+            <div className="mb-2">
+              <strong>Destination IP:</strong> 10.0.0.4
+            </div>
+            <div className="mb-2">
+              <strong>Protocol:</strong> TCP
+            </div>
+            <div className="mb-2">
+              <strong>Payload:</strong> `rm -rf /` (Potential Command Injection)
+            </div>
+            <div className="text-red-600 font-bold mt-2">
+              ⚠️ ALERT: Command Injection Attempt Detected!
+            </div>
           </div>
         </section>
 
@@ -125,8 +145,13 @@ const Module3 = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-2">Example Firewall Rule</h2>
-          <p className="mb-4">This rule blocks traffic from an external untrusted IP address range.</p>
+          <h2 className="text-2xl font-semibold text-gray-700 mb-2">
+            Example Firewall Rule
+          </h2>
+          <p className="mb-4">
+            This rule blocks traffic from an external untrusted IP address
+            range.
+          </p>
           <pre className="bg-black text-green-400 p-4 rounded-md overflow-x-auto">
             {`iptables -A INPUT -s 203.0.113.0/24 -j DROP`}
           </pre>
@@ -138,7 +163,8 @@ const Module3 = () => {
 
         <div className="bg-green-100 p-4 border-l-4 border-green-500 rounded-md">
           <p>
-            <strong>Next:</strong> Learn how to secure individual devices in Module 4.
+            <strong>Next:</strong> Learn how to secure individual devices in
+            Module 4.
           </p>
         </div>
       </div>
