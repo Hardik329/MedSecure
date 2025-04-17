@@ -2,10 +2,11 @@ import React from "react";
 import Quiz from "../components/Quiz";
 import LearningObjectives from "../components/LearningObjectives";
 import Section from "../components/Section";
-import Table from "../components/Table";
 import HighlightBox from "../components/HighlightBox";
 import NextModuleCard from "../components/NextModuleCard";
 import { ProgressBar } from "../components/ProgressBar";
+import AccessControlDiagram from "../components/AccessControlDiagram";
+
 
 const Module7 = () => {
   const objectives = [
@@ -13,51 +14,51 @@ const Module7 = () => {
     "Differentiate between types of access control: MAC, DAC, and RBAC.",
     "Learn how access control is implemented in connected healthcare systems.",
     "Identify common access control vulnerabilities and misconfigurations.",
-    "Apply best practices for securing access to medical devices and data.",
+    "Apply best practices for securing access to medical devices and data."
   ];
 
   const questions = [
     {
-      question:
-        "Which access control model assigns permissions based on user roles?",
+      question: "Which access control model assigns permissions based on user roles?",
       options: ["MAC", "RBAC", "DAC"],
-      correctIndex: 1,
+      correctIndex: 1
     },
     {
       question: "What does DAC stand for?",
       options: [
         "Distributed Access Control",
         "Discretionary Access Control",
-        "Direct Authorization Control",
+        "Direct Authorization Control"
       ],
-      correctIndex: 1,
+      correctIndex: 1
     },
     {
       question: "Which of the following is a common access control issue?",
       options: [
         "Strong password policies",
         "Least privilege",
-        "Default credentials in production",
+        "Default credentials in production"
       ],
-      correctIndex: 2,
+      correctIndex: 2
     },
     {
       question: "What is the key benefit of RBAC in healthcare settings?",
       options: [
         "Anyone can access any record",
         "Automatic encryption",
-        "Streamlined permissions based on job roles",
+        "Streamlined permissions based on job roles"
       ],
-      correctIndex: 2,
-    },
+      correctIndex: 2
+    }
   ];
 
   return (
     <div>
       <div className="bg-[#1c2538] h-40 flex items-center justify-center">
-        <h1 className="text-4xl font-bold text-white">
-          Module 7: Access Control
-        </h1>
+        <h1 className="text-4xl font-bold text-white">Module 7: Access Control</h1>
+      </div>
+      <div>
+        <ProgressBar />
       </div>
       <div className="max-w-5xl mx-auto px-6 py-10 text-gray-800">
         <LearningObjectives objectives={objectives} />
@@ -107,6 +108,10 @@ const Module7 = () => {
               <li>Unrestricted administrative access</li>
             </ul>
           </HighlightBox>
+        </Section>
+
+        <Section title="Visual Overview: Access Control Models">
+          <AccessControlDiagram />
         </Section>
 
         <Quiz questions={questions} />

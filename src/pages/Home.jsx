@@ -16,6 +16,7 @@ const Module4 = lazy(() => import("../modules/Module4"));
 const Module5 = lazy(() => import("../modules/Module5"));
 const Module6 = lazy(() => import("../modules/Module6"));
 const Module7 = lazy(() => import("../modules/Module7"));
+const Module8 = lazy(() => import("../modules/Module8"));
 
 const moduleComponents = [
   Module1,
@@ -25,6 +26,7 @@ const moduleComponents = [
   Module5,
   Module6,
   Module7,
+  Module8,
 ];
 
 const ModulePage = ({ id }) => {
