@@ -21,7 +21,7 @@ wss.on("connection", async (ws) => {
     HostConfig: {
       AutoRemove: true,
       Binds: [
-        "C:/CyberDocker:/mnt/resources:ro" 
+        "C:/CyberDocker:/resources:ro" 
       ]
     },
     

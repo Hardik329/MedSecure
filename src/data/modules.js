@@ -62,26 +62,26 @@ const modules = [
       "Learn how to test web applications and APIs for vulnerabilities.",
     ],
   },
-  // {
-  //   id: 8,
-  //   title: "Password Security",
-  //   objectives: "Understand the importance of strong passwords and authentication methods."
-  // },
-  // {
-  //   id: 9,
-  //   title: "Incident Response",
-  //   objectives: "Learn how to respond to security incidents effectively."
-  // },
-  // {
-  //   id: 10,
-  //   title: "Compliance & Monitoring",
-  //   objectives: "Understand compliance requirements and monitoring techniques."
-  // },
-  // {
-  //   id: 11,
-  //   title: "Security Culture",
-  //   objectives: "Foster a culture of security within your organization."
-  // },
+  {
+    id: 8,
+    title: "Password Security",
+    objectives: "Understand the importance of strong passwords and authentication methods."
+  },
+  {
+    id: 9,
+    title: "Incident Response",
+    objectives: "Learn how to respond to security incidents effectively."
+  },
+  {
+    id: 10,
+    title: "Compliance & Monitoring",
+    objectives: "Understand compliance requirements and monitoring techniques."
+  },
+  {
+    id: 11,
+    title: "Security Culture",
+    objectives: "Foster a culture of security within your organization."
+  },
   // {
   //   id: 12,
   //   title: "Hands-on Labs",

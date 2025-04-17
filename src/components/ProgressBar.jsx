@@ -10,7 +10,7 @@ function CircularProgressWithLabel(props) {
   
   return (
     <Box sx={{ position: "relative", display: "inline-flex" }}>
-      <CircularProgress variant="determinate" {...props} />
+      <CircularProgress variant="determinate" {...props}/>
       <Box
         sx={{
           top: 0,
@@ -26,7 +26,7 @@ function CircularProgressWithLabel(props) {
         <Typography
           variant="caption"
           component="div"
-          sx={{ color: "text.secondary" }}
+          sx={{ color: "text.secondary" , fontSize: "10px", fontWeight: "bold"}}
         >
           {`${Math.round(props.value)}%`}
         </Typography>
@@ -41,6 +41,7 @@ CircularProgressWithLabel.propTypes = {
 
 export function ProgressCircle({ moduleName }) {
   const value = useSelector((state) => state?.moduleProgress[moduleName]?.progress || 0);
+  if(value === 0) return;
   
   // const [progress, setProgress] = React.useState(0);
 
