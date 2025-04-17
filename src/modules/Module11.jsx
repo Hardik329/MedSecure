@@ -73,7 +73,7 @@ const Module11 = ({ title }) => {
       <div className="p-6 max-w-5xl mx-auto">
         <LearningObjectives objectives={objectives} />
 
-        <VideoEmbed url="https://www.youtube.com/embed/sample-security-culture" />
+        <VideoEmbed url="https://www.youtube.com/embed/djLuvwzui6g?si=GjzKVSpQXyi6n7Yh" />
 
         <Section title="Why Security Culture Matters">
           <p>

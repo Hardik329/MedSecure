@@ -67,7 +67,7 @@ const Module10 = ({ title }) => {
       <div className="p-6 max-w-5xl mx-auto">
         <LearningObjectives objectives={objectives} />
 
-        <VideoEmbed url="https://www.youtube.com/embed/sample-incident-response-video" />
+        <VideoEmbed url="https://www.youtube.com/embed/MsGl6lX-YaI?si=lwGEtybesQ7g005o" />
 
         <Section title="Why Incident Response Matters">
           <p>

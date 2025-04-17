@@ -66,7 +66,7 @@ const ModulePasswordSecurity = ({ title }) => {
       <div className="p-6 max-w-5xl mx-auto">
         <LearningObjectives objectives={objectives} />
 
-        <VideoEmbed url="https://www.youtube.com/embed/sample-password-security" />
+        <VideoEmbed  url="https://www.youtube.com/embed/t8SQo3R7qeU?si=E2TC26fnPgSCuRS0" />
 
         <Section title="Why Password Security Matters">
           <p>

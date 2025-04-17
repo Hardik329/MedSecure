@@ -29,10 +29,10 @@ const moduleComponents = [
   Module5,
   Module6,
   Module7,
+  Module8,
   Module9,
   Module10,
   Module11,
-  Module8,
 ];
 
 const ModulePage = ({ id }) => {
