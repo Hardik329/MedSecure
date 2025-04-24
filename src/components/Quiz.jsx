@@ -37,9 +37,15 @@ const Quiz = ({ questions }) => {
       const updated = [...prev];
       updated[qIndex] = optionIndex;
       let progress = 100;
+      let count = 0;
       updated.forEach((answer) => {
-        if (answer === null) progress = 0;
+        if (answer === null) {
+          progress = 0;
+          count = count + 1;
+        }
       });
+
+      progress = Math.floor(questions.length - count) * (100 / questions.length);
 
       dispatch(
         updateModuleProgress({

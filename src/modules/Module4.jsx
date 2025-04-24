@@ -1,6 +1,7 @@
 import React from "react";
 import Quiz from "../components/Quiz";
 import TerminalComponent from "../components/Terminal";
+import DualTerminal from "../components/DualTerminal";
 
 const Module4 = () => {
   const [showTerminal, setShowTerminal] = React.useState(false);
@@ -153,9 +154,9 @@ const Module4 = () => {
             🧪 Hands-on Challenge
           </h2>
           <p className="mb-4">
-            Use our custom kali VM to practice device hardening. Try
-            fixing weak passwords, disabling services, and configuring a basic
-            firewall using <code>ufw</code>.
+            Use our custom kali VM to practice device hardening. Try fixing weak
+            passwords, disabling services, and configuring a basic firewall
+            using <code>ufw</code>.
           </p>
           {/* <div className="bg-yellow-100 p-3 rounded-lg border-l-4 border-yellow-400">
             🔍 Start the VM named <code>hardening-lab</code> in your virtual
@@ -167,11 +168,7 @@ const Module4 = () => {
           >
             {showTerminal ? "Stop Terminal" : "Start Terminal"}
           </button>
-          {showTerminal && (
-            <div className="mt-4 p-4">
-              <TerminalComponent />
-            </div>
-          )}
+          {showTerminal && <DualTerminal />}
         </section>
 
         <section className="quiz mb-10">
@@ -189,4 +186,4 @@ const Module4 = () => {
   );
 };
 
-export default Module4;
+export default Module4;
