@@ -1,5 +1,6 @@
 import React from "react";
 import Quiz from "../components/Quiz";
+import MedicalIoTShodanLab from "../components/MedicalIoTShodanLab";
 
 const Module5 = () => {
   const questions = [
@@ -130,6 +131,10 @@ const Module5 = () => {
           <div className="mt-3 bg-yellow-100 p-3 rounded-md">
             🧠 <strong>Tip:</strong> Combine Google Dorking with Shodan to track exposed patient record dashboards!
           </div>
+        </section>
+
+        <section className="mb-10">
+          <MedicalIoTShodanLab />
         </section>
 
         <section className="quiz mb-10">

@@ -48,8 +48,9 @@ const handleExit = async (signal) => {
   process.exit(0);
 };
 
-process.on("SIGINT", handleExit);
-process.on("SIGTERM", handleExit);
+process.on("SIGINT", handleExit); 
+process.on("SIGTERM", handleExit); 
+
 
 app.listen(3000, () => {
   console.log("WebSocket terminal server listening on port 8080");

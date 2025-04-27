@@ -1,6 +1,6 @@
 import React from "react";
 import Quiz from "../components/Quiz";
-import TerminalComponent from "../components/Terminal";
+import DeviceHardeningLab from "../components/DeviceHardeningLab";
 import DualTerminal from "../components/DualTerminal";
 import HandsOn from "../components/HandsOn";
 
@@ -147,6 +147,10 @@ const Module4 = () => {
               <li>Firewall is turned off</li>
             </ul>
           </details>
+        </section>
+
+        <section className="mb-10">
+          <DeviceHardeningLab />
         </section>
 
         <section className="quiz mb-10">
