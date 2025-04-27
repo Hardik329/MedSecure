@@ -174,13 +174,14 @@ const Module12 = ({ title }) => {
           </HighlightBox>
         </Section>
 
-        <Section title="📝 Quiz: Test Your Knowledge on Security Culture">
+        {/* <Section title="📝 Quiz: Test Your Knowledge on Security Culture"> */}
           <Quiz questions={quizQuestions} />
-        </Section>
+        {/* </Section> */}
 
         <NextModuleCard
           title="Incident Management"
           description="Learn how to respond effectively to security incidents and mitigate potential damages."
+          last = {true}
         />
       </div>
     </div>

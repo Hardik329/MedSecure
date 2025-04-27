@@ -40,14 +40,39 @@ const ModulePasswordSecurity = ({ title }) => {
 
   const tasks = [
     {
-      label:
-        "Crack password of flag.zip using 'john the ripper'. First convert the file to hash and crack the hash using john.",
+      label: "Crack password of flag.zip using 'john the ripper'.",
       flag: "123456",
+      commands: [
+        {
+          label: "Convert zip file to hash",
+          command: "zip2john flag.zip > hash.txt",
+        },
+        {
+          label: "Crack the hash",
+          command: "john hash.txt",
+        },
+        {
+          label: "Check cracked passwords",
+          command: "john --show hash.txt",
+        },
+      ],
     },
     {
       label:
         "Crack the hash from the file hash.txt using hashcat. You may need the wordlist rockyou.txt provided in the resources folder.",
       flag: "admin123",
+      commands: [
+        {
+          label:
+            "Use hashcat to crack the hash. (look up for the hash mode of the given hash)",
+          command:
+            "hashcat -m <hash mode> -a <attack mode> <hash file> <wordlist>",
+        },
+        {
+          label: "Check cracked passwords",
+          command: "hashcat -m <hash mode> -a <attack mode> --show <hash file>",
+        },
+      ],
     },
   ];
 
@@ -156,6 +181,7 @@ const ModulePasswordSecurity = ({ title }) => {
         <HandsOn
           tasks={tasks}
           title="In this challenge we will be learning how to crack password hashes using tools like hashcat and john the ripper."
+          single={true}
         />
 
         <Quiz questions={quizQuestions} />

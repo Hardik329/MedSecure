@@ -3,10 +3,12 @@ import { handleGoogleLogin } from "../auth";
 import { auth, provider } from "../firebase";
 import { useEffect, useRef, useState } from "react";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ user, setUser }) => {
   const [profileOpen, setProfileOpen] = useState(false);
   const menuRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -23,7 +25,10 @@ const Navbar = ({ user, setUser }) => {
   return (
     <header className="top-nav flex w-full justify-between items-center px-40 h-25 ">
       <div className="left">
-        <h1 className="top-nav-title flex font-bold text-xl">
+        <h1
+          className="top-nav-title flex font-bold text-xl cursor-pointer"
+          onClick={() => navigate("/")}
+        >
           <div className="mr-1">
             <img className="logo" src={logo} alt="Logo" />
           </div>

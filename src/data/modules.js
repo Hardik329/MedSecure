@@ -48,39 +48,64 @@ const modules = [
   {
     id: 5,
     title: "Secure Data Management",
-    objectives: ["Learn how to manage sensitive data securely."],
+    objectives: ["Learn how to manage sensitive data securely.",
+      "Understand data encryption and storage best practices.",
+      "Explore secure data transmission methods.",
+    ],
   },
   {
     id: 6,
     title: "Access Control",
-    objectives: ["Implement access controls to protect sensitive data."],
+    objectives: [
+      "Implement access controls to protect sensitive data.",
+      "Understand the principle of least privilege.",
+      "Explore authentication and authorization mechanisms.",
+    ],
   },
   {
     id: 7,
     title: "Web & API Testing",
     objectives: [
       "Learn how to test web applications and APIs for vulnerabilities.",
+      "Understand common web vulnerabilities like SQL injection and XSS.",
+      "Explore tools for web application security testing.",
     ],
   },
   {
     id: 8,
     title: "Password Security",
-    objectives: "Understand the importance of strong passwords and authentication methods."
+    objectives: [
+      "Understand the importance of strong passwords and authentication methods.",
+      "Learn about password management tools and techniques.",
+      "Explore common password attacks and how to mitigate them.",
+    ],
   },
   {
     id: 9,
     title: "Incident Response",
-    objectives: "Learn how to respond to security incidents effectively."
+    objectives: [
+      "Learn how to respond to security incidents effectively.",
+      "Understand the importance of incident response plans and teams.",
+      "Familiarize yourself with tools and techniques for incident detection and response.",
+    ],
   },
   {
     id: 10,
     title: "Compliance & Monitoring",
-    objectives: "Understand compliance requirements and monitoring techniques."
+    objectives: [
+      "Understand compliance requirements and monitoring techniques.",
+      "Learn about regulatory frameworks and standards relevant to medical IoT.",
+      "Explore monitoring tools and techniques for continuous security assessment.",
+    ],
   },
   {
     id: 11,
     title: "Security Culture",
-    objectives: "Foster a culture of security within your organization."
+    objectives: [
+      "Foster a culture of security within your organization.",
+      "Understand the role of training and awareness in cybersecurity.",
+      "Learn how to promote security best practices among employees.",
+    ],
   },
   // {
   //   id: 12,
