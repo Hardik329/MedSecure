@@ -7,7 +7,6 @@ import HighlightBox from "../components/HighlightBox";
 import NextModuleCard from "../components/NextModuleCard";
 import { ProgressBar } from "../components/ProgressBar";
 import NetworkLab from "../components/NetworkLab";
-import TerminalLab from "../components/TerminalLab";
 
 const Module3 = ({ title }) => {
   const objectives = [
@@ -82,7 +81,7 @@ const Module3 = ({ title }) => {
         </Section>
 
 
-        <Section title="🖥️ Packet Inspection Exercise">
+        <Section title="🖥 Packet Inspection Exercise">
           <p className="mb-4">
             Imagine your hospital firewall flags a suspicious packet. Below is a simulated report your IDS (Intrusion Detection System) generated. Study it and analyze whether it indicates a threat:
           </p>
@@ -91,7 +90,7 @@ const Module3 = ({ title }) => {
             <div className="mb-2"><strong>Destination IP:</strong> 10.0.0.4</div>
             <div className="mb-2"><strong>Protocol:</strong> TCP</div>
             <div className="mb-2"><strong>Payload:</strong> rm -rf / (Potential Command Injection)</div>
-            <div className="text-red-600 font-bold mt-2">⚠️ ALERT: Command Injection Attempt Detected!</div>
+            <div className="text-red-600 font-bold mt-2">⚠ ALERT: Command Injection Attempt Detected!</div>
           </div>
         </Section>
 
@@ -102,9 +101,81 @@ const Module3 = ({ title }) => {
           <pre className="bg-black text-green-400 p-4 rounded-md overflow-x-auto">
             {`iptables -A INPUT -s 203.0.113.0/24 -j DROP`}
           </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </Section>
 
-        <Section title="🖥️ Simulated Network Terminal Lab">
+        <Section title="🖥 Simulated Network Terminal Lab">
           <p className="mb-4">
             Use the simulated network terminal below to practice basic security commands in a safe environment.
           </p>
@@ -124,4 +195,4 @@ const Module3 = ({ title }) => {
   );
 };
 
-export default Module3;
+export default Module3;

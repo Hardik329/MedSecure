@@ -6,6 +6,7 @@ import Table from "../components/Table";
 import HighlightBox from "../components/HighlightBox";
 import NextModuleCard from "../components/NextModuleCard";
 import { ProgressBar } from "../components/ProgressBar";
+import DataSecurityLab from "../components/DataSecurityLab";
 
 const Module6 = ({ title }) => {
   const objectives = [
@@ -155,19 +156,8 @@ const Module6 = ({ title }) => {
           </ul>
         </Section>
 
-        <Section title="🛠️ Hands-On Task">
-          <ul className="list-disc list-inside space-y-1">
-            <li>Use OpenSSL to encrypt and decrypt a test patient record.</li>
-            <li>
-              Configure a sample IoT device to use TLS for data transmission.
-            </li>
-            <li>
-              Simulate a HIPAA audit using an open-source compliance checker.
-            </li>
-            <li>
-              Use CyberChef to experiment with encoding and hashing methods.
-            </li>
-          </ul>
+        <Section title="🛠 Hands-On Task">
+          <DataSecurityLab />
         </Section>
 
         <Quiz questions={questions} />
@@ -182,4 +172,4 @@ const Module6 = ({ title }) => {
   );
 };
 
-export default Module6;
+export default Module6;
