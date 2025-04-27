@@ -1,6 +1,7 @@
 import React from "react";
 import Quiz from "../components/Quiz";
 import { ProgressBar } from "../components/ProgressBar";
+import MedicalIoTThreatActorsLab from "../components/MedicalIoTThreatActorsLab";
 
 const Module2 = () => {
   const questions = [
@@ -148,6 +149,10 @@ const Module2 = () => {
               notoriety
             </li>
           </ul>
+        </section>
+
+        <section>
+          <MedicalIoTThreatActorsLab />
         </section>
 
         <section className="quiz mb-10">
