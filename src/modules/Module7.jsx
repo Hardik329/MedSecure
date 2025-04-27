@@ -17,7 +17,6 @@ const Module7 = () => {
     "Identify common access control vulnerabilities and misconfigurations.",
     "Apply best practices for securing access to medical devices and data.",
   ];
-
   const questions = [
     {
       question:
@@ -125,8 +124,9 @@ const Module7 = () => {
         <Quiz questions={questions} />
 
         <NextModuleCard
-          nextModule="Module 8"
-          description="Learn how to monitor and audit Medical IoT systems effectively."
+          title="Module 8: Web & API Testing"
+          description="Explore web and API testing in Module 8 to learn how to secure web applications and APIs in medical IoT."
+          link="/module8"
         />
       </div>
     </div>

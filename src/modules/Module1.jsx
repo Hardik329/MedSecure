@@ -123,8 +123,9 @@ const Module1 = ({title}) => {
         <Quiz questions={questions} />
 
         <NextModuleCard
-          nextModule="2"
+          title="Module 2: Threat Landscape"
           description="Explore the Threat Landscape in Module 2 to understand who might target medical IoT and why."
+          link="/module2"
         />
       </div>
     </div>

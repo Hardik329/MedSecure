@@ -16,7 +16,6 @@ const Module6 = ({ title }) => {
     "Evaluate the impact of compliance regulations (HIPAA, GDPR).",
     "Identify common mistakes in data handling and how to prevent them.",
   ];
-
   const questions = [
     {
       question: "Which encryption method is best for data at rest?",
@@ -163,9 +162,9 @@ const Module6 = ({ title }) => {
         <Quiz questions={questions} />
 
         <NextModuleCard
-          title="Web & API Testing"
-          description="Dive into automated techniques to ensure the security and performance of healthcare web apps and APIs."
-          link="/modules/web-api-testing"
+          title="Module 7: Access Control"
+          description="Dive into access control mechanisms to secure medical IoT devices."
+          link="/module7"
         />
       </div>
     </div>

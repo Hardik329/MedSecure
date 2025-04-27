@@ -147,9 +147,9 @@ const Module11 = ({ title }) => {
         <Quiz questions={quizQuestions} />
 
         <NextModuleCard
-          title="Congratulations!"
-          description="You've completed the cybersecurity training series. Review your progress or explore bonus content."
-          link="/dashboard"
+          title="Module 12: Security Culture"
+          description="Learn how to cultivate a security-aware environment in healthcare."
+          link="/module12"
         />
       </div>
     </div>

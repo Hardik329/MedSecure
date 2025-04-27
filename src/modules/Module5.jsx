@@ -1,8 +1,16 @@
 import React from "react";
 import Quiz from "../components/Quiz";
 import MedicalIoTShodanLab from "../components/MedicalIoTShodanLab";
+import LearningObjectives from "../components/LearningObjectives";
+import { ProgressBar } from "../components/ProgressBar";
+import NextModuleCard from "../components/NextModuleCard";
 
 const Module5 = () => {
+  const objectives = [
+    "Understand Open Source Intelligence (OSINT) and its applications.",
+    "Use Shodan to identify exposed medical devices.",
+    "Analyze device banners and metadata.",
+  ];
   const questions = [
     {
       question: "What does OSINT stand for?",
@@ -39,15 +47,12 @@ const Module5 = () => {
           Module 5: OSINT & Shodan
         </h1>
       </div>
+      <div>
+        <ProgressBar />
+      </div>
       <div className="max-w-5xl mx-auto px-6 py-10 text-gray-800">
-        <section className="module-section mb-4">
-          <h2>🎯 Learning Objectives</h2>
-          <ul className="list-disc list-inside pl-4 space-y-2 mb-6">
-            <li>Understand Open Source Intelligence (OSINT) and its applications.</li>
-            <li>Use Shodan to identify exposed medical devices.</li>
-            <li>Analyze banners and network metadata.</li>
-          </ul>
-        </section>
+
+        <LearningObjectives objectives={objectives} />
 
         <section className="mb-10">
           <h2 className="text-2xl font-bold text-gray-800 mb-3">What is OSINT?</h2>
@@ -141,11 +146,11 @@ const Module5 = () => {
           <Quiz questions={questions} />
         </section>
 
-        <div className="bg-green-100 p-4 border-l-4 border-green-500 rounded-md">
-          <p>
-            <strong>Next:</strong> Proceed to advanced testing and labs in Module 6.
-          </p>
-        </div>
+        <NextModuleCard
+          title="Module 6: Secure Data Management"
+          description="Explore secure data management in Module 6 to learn how to protect sensitive medical data."
+          link="/module6"
+        />
       </div>
     </div>
   );

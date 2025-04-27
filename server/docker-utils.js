@@ -87,7 +87,7 @@ async function createKaliContainer(attacker) {
     HostConfig: {
       AutoRemove: true,
       NetworkMode: networkName,
-      Binds: ["C:/CyberDocker:/resources:ro"],
+      // Binds: ["C:/CyberDocker:/resources:ro"],
       Privileged: true
     },
   });

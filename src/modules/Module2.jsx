@@ -2,6 +2,7 @@ import React from "react";
 import Quiz from "../components/Quiz";
 import { ProgressBar } from "../components/ProgressBar";
 import MedicalIoTThreatActorsLab from "../components/MedicalIoTThreatActorsLab";
+import NextModuleCard from "../components/NextModuleCard";
 
 const Module2 = () => {
   const questions = [
@@ -159,12 +160,11 @@ const Module2 = () => {
           <Quiz questions={questions} />
         </section>
 
-        <div className="bg-green-100 p-4 border-l-4 border-green-500 rounded-md">
-          <p>
-            <strong>Next:</strong> Learn how to secure hospital networks in
-            Module 3.
-          </p>
-        </div>
+        <NextModuleCard
+          title="Module 3: Network Security"
+          description="Explore the network security landscape in Module 3 to understand how to secure medical IoT devices."
+          link="/module3"
+        />
       </div>
     </div>
   );

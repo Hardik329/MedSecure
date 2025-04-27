@@ -177,12 +177,12 @@ const Module12 = ({ title }) => {
         <Section title="📝 Quiz: Test Your Knowledge on Security Culture">
           <Quiz questions={quizQuestions} />
         </Section>
-
-        <NextModuleCard
-          title="Incident Management"
-          description="Learn how to respond effectively to security incidents and mitigate potential damages."
-        />
-      </div>
+        
+        <div className="bg-green-100 p-4 rounded-md text-center mt-8">
+            <h3 className="text-xl font-semibold text-green-700 mb-2">🎉 Congratulations!</h3>
+            <p className="text-green-600">You have completed the course. Great job!</p>
+          </div>
+        </div>
     </div>
   );
 };

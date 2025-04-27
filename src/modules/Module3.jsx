@@ -101,78 +101,6 @@ const Module3 = ({ title }) => {
           <pre className="bg-black text-green-400 p-4 rounded-md overflow-x-auto">
             {`iptables -A INPUT -s 203.0.113.0/24 -j DROP`}
           </pre>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </Section>
 
         <Section title="🖥 Simulated Network Terminal Lab">
@@ -186,9 +114,9 @@ const Module3 = ({ title }) => {
         <Quiz questions={questions} />
 
         <NextModuleCard
-          title="Device Hardening"
-          description="Explore techniques to strengthen IoT devices against threats through configurations, updates, and physical security."
-          link="/modules/device-hardening"
+          title="Module 4: Device Hardening"
+          description="Learn how to harden IoT devices against common vulnerabilities."
+          link="/module4"
         />
       </div>
     </div>

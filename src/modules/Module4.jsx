@@ -3,8 +3,16 @@ import Quiz from "../components/Quiz";
 import DeviceHardeningLab from "../components/DeviceHardeningLab";
 import DualTerminal from "../components/DualTerminal";
 import HandsOn from "../components/HandsOn";
+import { ProgressBar } from "../components/ProgressBar";
+import LearningObjectives from "../components/LearningObjectives";
+import NextModuleCard from "../components/NextModuleCard";
 
 const Module4 = () => {
+  const objectives = [
+    "Apply hardening techniques to medical devices.",
+    "Update and patch firmware securely.",
+    "Enable access controls and encryption.",
+  ];
   const questions = [
     {
       question: "What is the goal of 'device hardening'?",
@@ -41,19 +49,14 @@ const Module4 = () => {
   return (
     <div>
       <div className="bg-[#1c2538] h-40 flex items-center justify-center">
-        <h1 className="text-4xl font-bold text-white">
-          Module 4: Device Hardening
-        </h1>
+        <h1 className="text-4xl font-bold text-white">Module 4: Device Hardening</h1>
+      </div>
+      <div>
+        <ProgressBar />
       </div>
       <div className="max-w-5xl mx-auto px-6 py-10 text-gray-800">
-        <section className="module-section mb-4">
-          <h2>🎯 Learning Objectives</h2>
-          <ul className="list-disc list-inside pl-4 space-y-2 mb-6">
-            <li>Apply hardening techniques to medical devices.</li>
-            <li>Update and patch firmware securely.</li>
-            <li>Enable access controls and encryption.</li>
-          </ul>
-        </section>
+
+        <LearningObjectives objectives={objectives} />
 
         <section className="mb-10">
           <h2 className="text-2xl font-bold text-gray-800 mb-3">
@@ -157,12 +160,11 @@ const Module4 = () => {
           <Quiz questions={questions} />
         </section>
 
-        <div className="bg-green-100 p-4 border-l-4 border-green-500 rounded-md">
-          <p>
-            <strong>Next:</strong> Use OSINT & Shodan to assess exposure in
-            Module 5.
-          </p>
-        </div>
+        <NextModuleCard
+          title="Module 5: OSINT & Shodan"
+          description="Dive into OSINT and Shodan in Module 5 to learn how to discover vulnerabilities in medical devices."
+          link="/module5"
+        />
       </div>
     </div>
   );

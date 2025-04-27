@@ -161,9 +161,9 @@ const ModulePasswordSecurity = ({ title }) => {
         <Quiz questions={quizQuestions} />
 
         <NextModuleCard
-          title="Incident Response"
-          description="Learn the phases of responding to cyber incidents in medical IoT settings."
-          link="/modules/incident-response"
+          title="Module 10: Incident Response"
+          description="Learn how to respond effectively to security incidents in healthcare."
+          link="/module10"
         />
       </div>
     </div>

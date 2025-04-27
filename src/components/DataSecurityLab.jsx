@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import TerminalComponent from "../components/Terminal";
-
+import DualTerminal from "../components/DualTerminal";
 const DataSecurityLab = () => {
   const [showTerminal, setShowTerminal] = useState(false);
 
@@ -78,7 +78,7 @@ EOF`,
 
         {showTerminal && (
           <div className="mt-4">
-            <TerminalComponent kali={false} />
+            <DualTerminal/>
           </div>
         )}
       </div>

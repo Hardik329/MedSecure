@@ -206,16 +206,16 @@ const Module8 = ({ title }) => {
 
         <LogTimeline />
 
-        <section className="mb-10">
+        {/* <section className="mb-10">
           <WebApiTestingLab />
-        </section>
+        </section> */}
 
         <Quiz questions={quizQuestions} />
 
         <NextModuleCard
-          title="Device Hardening"
-          description="Learn how to reduce the attack surface of medical IoT devices through configuration and policy."
-          link="/modules/device-hardening"
+          title="Module 9: Password Security"
+          description="Explore password security in Module 9 to learn how to secure credentials in medical IoT."
+          link="/module9"
         />
       </div>
     </div>

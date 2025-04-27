@@ -169,9 +169,9 @@ const Module10 = ({ title }) => {
         <Quiz questions={quizQuestions} />
 
         <NextModuleCard
-          title="Compliance & Monitoring"
+          title="Module 11: Compliance & Monitoring"
           description="Explore the standards and continuous monitoring strategies for medical systems."
-          link="/modules/compliance-monitoring"
+          link="/module11"
         />
       </div>
     </div>
