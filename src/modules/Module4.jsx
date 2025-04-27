@@ -2,9 +2,9 @@ import React from "react";
 import Quiz from "../components/Quiz";
 import TerminalComponent from "../components/Terminal";
 import DualTerminal from "../components/DualTerminal";
+import HandsOn from "../components/HandsOn";
 
 const Module4 = () => {
-  const [showTerminal, setShowTerminal] = React.useState(false);
   const questions = [
     {
       question: "What is the goal of 'device hardening'?",
@@ -147,28 +147,6 @@ const Module4 = () => {
               <li>Firewall is turned off</li>
             </ul>
           </details>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-xl font-semibold text-gray-700 mb-2">
-            🧪 Hands-on Challenge
-          </h2>
-          <p className="mb-4">
-            Use our custom kali VM to practice device hardening. Try fixing weak
-            passwords, disabling services, and configuring a basic firewall
-            using <code>ufw</code>.
-          </p>
-          {/* <div className="bg-yellow-100 p-3 rounded-lg border-l-4 border-yellow-400">
-            🔍 Start the VM named <code>hardening-lab</code> in your virtual
-            lab.
-          </div> */}
-          <button
-            onClick={() => setShowTerminal((prev) => !prev)}
-            className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200"
-          >
-            {showTerminal ? "Stop Terminal" : "Start Terminal"}
-          </button>
-          {showTerminal && <DualTerminal />}
         </section>
 
         <section className="quiz mb-10">

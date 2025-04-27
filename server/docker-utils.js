@@ -88,6 +88,7 @@ async function createKaliContainer(attacker) {
       AutoRemove: true,
       NetworkMode: networkName,
       Binds: ["C:/CyberDocker:/resources:ro"],
+      Privileged: true
     },
   });
 
@@ -104,6 +105,7 @@ async function createVulnContainer(defender) {
     HostConfig: {
       AutoRemove: true,
       NetworkMode: networkName,
+      Privileged: true
     },
   });
 

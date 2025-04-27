@@ -108,12 +108,12 @@ const TerminalComponent = ({ kali }) => {
     connectWebSocket();
 
     term.current.onKey(({ key, domEvent }) => {
-      const printable =
-        !domEvent.altKey && !domEvent.ctrlKey && !domEvent.metaKey;
+      // const printable =
+      //   !domEvent.altKey && !domEvent.ctrlKey && !domEvent.metaKey;
       if (domEvent.ctrlKey && domEvent.key === "c") {
         socket.current?.send("\x03"); // Ctrl+C
         commandBuffer.current = "";
-      } else if (domEvent.key === "Enter") {
+      }else if (domEvent.key === "Enter") {
         socket.current?.send("\n");
         commandBuffer.current = "";
       } else if (domEvent.key === "Backspace") {
@@ -121,11 +121,16 @@ const TerminalComponent = ({ kali }) => {
           commandBuffer.current = commandBuffer.current.slice(0, -1);
           socket.current?.send("\b");
         }
-      } else if (printable) {
+      } else {
         commandBuffer.current += key;
         socket.current?.send(key);
       }
     });
+    // term.current.onData((data) => {
+    //   // term.current.write(data); 
+    //   socket.current?.send(data);
+    // });
+    
 
     return () => {
       socket.current?.close();

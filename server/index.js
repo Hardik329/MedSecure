@@ -32,8 +32,8 @@ wss.on("connection", async (ws, req) => {
     const kaliContainer = await createKaliContainer(attacker);
     await streamToTerminal(kaliContainer, "/bin/bash", ws);
   } else if (path === "/vuln") {
-    const vulnContainer = await createVulnContainer(defender);
-    await streamToTerminal(vulnContainer, "/bin/sh", ws);
+    const vulnContainer = await createVulnContainer(attacker);
+    await streamToTerminal(vulnContainer, "/bin/bash", ws);
   } else {
     ws.close(1000, "Invalid path");
     return;
