@@ -105,9 +105,39 @@ async function createVulnContainer(defender) {
     HostConfig: {
       AutoRemove: true,
       NetworkMode: networkName,
-      Privileged: true
+      Privileged: true,
+      PortBindings: {
+        "22/tcp": [
+          {
+            HostPort: "", // Docker will assign random host port, or set manually (like 2222)
+          },
+        ],
+      },
+    },
+    ExposedPorts: {
+      "22/tcp": {},
     },
   });
+
+  // const victim = await docker.createContainer({
+  //   Image: defender,
+  //   name: 'victim',
+  //   Cmd: ['/bin/bash', '-c', `
+  //     apt-get update && apt-get install -y openssh-server sudo && \
+  //     mkdir /var/run/sshd && \
+  //     useradd -m -s /bin/bash hacker && echo 'hacker:password123' | chpasswd && \
+  //     sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config && \
+  //     sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+  //     service ssh start && \
+  //     echo "🎯 Root flag: Success!" > /root/flag.txt && \
+  //     tail -f /dev/null
+  //   `],
+  //   Tty: true,
+  //   HostConfig: {
+  //     AutoRemove: true,
+  //     NetworkMode: networkName
+  //   }
+  // });
 
   await container.start();
   activeContainers.push(container);
