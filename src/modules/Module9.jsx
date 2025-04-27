@@ -74,6 +74,21 @@ const ModulePasswordSecurity = ({ title }) => {
         },
       ],
     },
+    {
+      label:"Crack into a vulnerable SSH server using hydra and enter the cracked password.",
+      flag: "password123",
+      commands: [
+        {
+          label:"Use nmap to look for IP addresses with open SSH ports in the network.",
+          command:
+            "nmap 172.22.0.0/24",
+        },
+        {
+          label: "Try to brute force the SSH server using hydra using the wordlist 'hydrapasswords.txt' provided.",
+          command: "hydra -l vulnerableuser -P <wordlist> ssh://<target-ip>",
+        },
+      ],
+    },
   ];
 
   const quizQuestions = [
@@ -181,7 +196,7 @@ const ModulePasswordSecurity = ({ title }) => {
         <HandsOn
           tasks={tasks}
           title="In this challenge we will be learning how to crack password hashes using tools like hashcat and john the ripper."
-          single={true}
+          // single={true}
         />
 
         <Quiz questions={quizQuestions} />

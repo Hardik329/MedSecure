@@ -19,7 +19,8 @@ let pentestNetwork;
 const attacker = "my-kali-custom";
 // const attacker = "kalilinux/kali-rolling";
 
-const defender = "appsecco/dsvw";
+const defender = "defender-image";
+// const defender = "appsecco/dsvw";
 
 wss.on("connection", async (ws, req) => {
   pentestNetwork = await createNetworkIfNotExists();
@@ -32,7 +33,7 @@ wss.on("connection", async (ws, req) => {
     const kaliContainer = await createKaliContainer(attacker);
     await streamToTerminal(kaliContainer, "/bin/bash", ws);
   } else if (path === "/vuln") {
-    const vulnContainer = await createVulnContainer(attacker);
+    const vulnContainer = await createVulnContainer(defender);
     await streamToTerminal(vulnContainer, "/bin/bash", ws);
   } else {
     ws.close(1000, "Invalid path");

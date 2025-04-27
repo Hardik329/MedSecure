@@ -53,7 +53,7 @@ const HandsOn = ({ title, tasks, single }) => {
         <div className="mt-6 space-y-6">
           {tasks?.map((task, index) => {
             let correct =
-              flags[index].isSubmitted && flags[index].flag === task.flag;
+              flags[index]?.isSubmitted && flags[index]?.flag === task.flag;
 
             return (
               <div key={index} className="bg-gray-200 p-5 rounded-lg">
