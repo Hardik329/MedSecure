@@ -7,6 +7,7 @@ import HighlightBox from "../components/HighlightBox";
 import NextModuleCard from "../components/NextModuleCard";
 import { ProgressBar } from "../components/ProgressBar";
 import NetworkLab from "../components/NetworkLab";
+import TerminalLab from "../components/TerminalLab";
 
 const Module3 = ({ title }) => {
   const objectives = [
@@ -103,7 +104,10 @@ const Module3 = ({ title }) => {
           </pre>
         </Section>
 
-        <Section title="🧪 Hands-On: Network Security Lab">
+        <Section title="🖥️ Simulated Network Terminal Lab">
+          <p className="mb-4">
+            Use the simulated network terminal below to practice basic security commands in a safe environment.
+          </p>
           <NetworkLab />
         </Section>
         

@@ -6,6 +6,8 @@ import HighlightBox from "../components/HighlightBox";
 import NextModuleCard from "../components/NextModuleCard";
 import { ProgressBar } from "../components/ProgressBar";
 import AccessControlDiagram from "../components/AccessControlDiagram";
+import HandsOn from "../components/HandsOn";
+import AccessControlLab from "../components/AccessControlLab";
 
 const Module7 = () => {
   const objectives = [
@@ -116,6 +118,10 @@ const Module7 = () => {
           <AccessControlDiagram />
         </Section>
 
+        <section className="mb-10">
+          <AccessControlLab />
+        </section>
+
         <Quiz questions={questions} />
 
         <NextModuleCard
@@ -128,3 +134,9 @@ const Module7 = () => {
 };
 
 export default Module7;
+
+
+
+
+
+

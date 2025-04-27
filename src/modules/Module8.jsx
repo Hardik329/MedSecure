@@ -8,6 +8,8 @@ import NextModuleCard from "../components/NextModuleCard";
 import { ProgressBar } from "../components/ProgressBar";
 import { ApiPlayground } from "../components/ApiPlayground";
 import LogTimeline from "../components/LogTimeline";
+import HandsOn from "../components/HandsOn";
+import WebApiTestingLab from "../components/WebApiTestingLab";
 
 const Module8 = ({ title }) => {
   const objectives = [
@@ -203,6 +205,10 @@ const Module8 = ({ title }) => {
         </Section>
 
         <LogTimeline />
+
+        <section className="mb-10">
+          <WebApiTestingLab />
+        </section>
 
         <Quiz questions={quizQuestions} />
 
