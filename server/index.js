@@ -21,11 +21,9 @@ wss.on("connection", async (ws) => {
     HostConfig: {
       AutoRemove: true,
       Binds: [
-        "C:/CyberDocker:/resources:ro" 
+        "/Users/vipulpatil/Documents/Study Work/College material/4th year/8th Sem/CS558(CyberSec)/CyberDocker:/resources:ro"
       ]
     },
-    
-    
   });
 
   await container.start();
@@ -83,6 +81,6 @@ process.on("SIGINT", handleExit);
 process.on("SIGTERM", handleExit); 
 
 
-app.listen(3000, () => {
+app.listen(8080, () => {
   console.log("WebSocket terminal server listening on port 8080");
 });
