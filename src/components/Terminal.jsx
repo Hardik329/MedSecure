@@ -1,9 +1,44 @@
 // Terminal.js
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Terminal } from "xterm";
 import "xterm/css/xterm.css";
 
-const TerminalComponent = () => {
+import { React, useState } from "react";
+// import Tabs from "@mui/material/Tabs";
+// import Tab from "@mui/material/Tab";
+// import TabPanel from "@mui/lab/TabPanel";
+// import TabList from '@mui/lab/TabList';
+// import TabContext from "@mui/lab/TabContext";
+
+// const TerminalContainer = () => {
+//   const [value, setValue] = useState(0);
+
+//   const handleChange = (event, newValue) => {
+//     setValue(newValue);
+//   };
+//   return (
+//     <>
+//       <TabContext value={value}>
+//         <TabList
+//           // value={value}
+//           onChange={handleChange}
+//           aria-label="basic tabs example"
+//         >
+//           <Tab label="Item One" />
+//           <Tab label="Item Two" />
+//         </TabList>
+//           <TerminalComponent />
+//         <TabPanel value="1">
+//         </TabPanel>
+//         <TabPanel value="2">
+//           {/* <TerminalComponent /> */}
+//         </TabPanel>
+//       </TabContext>
+//     </>
+//   );
+// };
+
+const TerminalComponent = ({ kali }) => {
   const terminalRef = useRef(null);
   const term = useRef(null);
   const socket = useRef(null);
@@ -17,7 +52,9 @@ const TerminalComponent = () => {
   const connectWebSocket = () => {
     console.log(socket.current);
     try {
-      socket.current = new WebSocket("ws://localhost:8080");
+      socket.current = new WebSocket(
+        `ws://localhost:8080/${kali ? "kali" : "vuln"}`
+      );
 
       socket.current.onopen = () => {
         console.log("WebSocket connection opened");
@@ -32,8 +69,8 @@ const TerminalComponent = () => {
       socket.current.onclose = () => {
         console.log("WebSocket connection closed");
         if (firstTry) {
-            firstTry = false;
-            return;
+          firstTry = false;
+          return;
         }
         if (retryCount < maxRetries) {
           retryCount++;
@@ -50,7 +87,6 @@ const TerminalComponent = () => {
           );
         }
       };
-
     } catch (error) {
       console.log("WebSocket error:", error);
       term.current.write(
@@ -66,18 +102,18 @@ const TerminalComponent = () => {
     term.current.write(
       "\x1b[1;3;31mWelcome to the MedSecure Terminal!\x1b[0m\r\n"
     );
-    term.current.write("Please wait while the kali container loads...\r\n");
+    term.current.write("Please wait while the container loads...\r\n");
     firstTry = true;
-    console.log("Creating container")
+    console.log("Creating container");
     connectWebSocket();
 
     term.current.onKey(({ key, domEvent }) => {
-      const printable =
-        !domEvent.altKey && !domEvent.ctrlKey && !domEvent.metaKey;
+      // const printable =
+      //   !domEvent.altKey && !domEvent.ctrlKey && !domEvent.metaKey;
       if (domEvent.ctrlKey && domEvent.key === "c") {
         socket.current?.send("\x03"); // Ctrl+C
         commandBuffer.current = "";
-      } else if (domEvent.key === "Enter") {
+      }else if (domEvent.key === "Enter") {
         socket.current?.send("\n");
         commandBuffer.current = "";
       } else if (domEvent.key === "Backspace") {
@@ -85,11 +121,16 @@ const TerminalComponent = () => {
           commandBuffer.current = commandBuffer.current.slice(0, -1);
           socket.current?.send("\b");
         }
-      } else if (printable) {
+      } else {
         commandBuffer.current += key;
         socket.current?.send(key);
       }
     });
+    // term.current.onData((data) => {
+    //   // term.current.write(data); 
+    //   socket.current?.send(data);
+    // });
+    
 
     return () => {
       socket.current?.close();
@@ -100,7 +141,14 @@ const TerminalComponent = () => {
   return (
     <div
       ref={terminalRef}
-      style={{ width: "100%", height: "500px", backgroundColor: "#000", padding: "10px", borderRadius: "5px", overflow: "hidden" }}
+      style={{
+        width: "100%",
+        height: "500px",
+        backgroundColor: "#000",
+        padding: "10px",
+        borderRadius: "5px",
+        overflow: "hidden",
+      }}
     />
   );
 };

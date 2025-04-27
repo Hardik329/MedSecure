@@ -13,7 +13,7 @@ const Module6 = ({ title }) => {
     "Learn encryption best practices for data at rest and in transit.",
     "Explore secure data storage techniques in IoT devices.",
     "Evaluate the impact of compliance regulations (HIPAA, GDPR).",
-    "Identify common mistakes in data handling and how to prevent them."
+    "Identify common mistakes in data handling and how to prevent them.",
   ];
 
   const questions = [
@@ -46,14 +46,15 @@ const Module6 = ({ title }) => {
       correctIndex: 0,
     },
     {
-      question: "What is the primary benefit of using a Key Management System (KMS)?",
+      question:
+        "What is the primary benefit of using a Key Management System (KMS)?",
       options: [
         "Improved data compression",
         "Centralized key handling and rotation",
-        "Better file organization"
+        "Better file organization",
       ],
       correctIndex: 1,
-    }
+    },
   ];
 
   return (
@@ -95,8 +96,8 @@ const Module6 = ({ title }) => {
               cloud storage.
             </li>
             <li>
-              <strong>Hybrid Encryption:</strong> Use symmetric encryption for data
-              and asymmetric for key exchange.
+              <strong>Hybrid Encryption:</strong> Use symmetric encryption for
+              data and asymmetric for key exchange.
             </li>
           </ul>
         </Section>
@@ -105,7 +106,9 @@ const Module6 = ({ title }) => {
           <ul className="list-disc list-inside space-y-1">
             <li>Use encrypted volumes or partitions on IoT devices.</li>
             <li>Implement strict access control via RBAC or ABAC policies.</li>
-            <li>Never store sensitive data in plaintext or local browser storage.</li>
+            <li>
+              Never store sensitive data in plaintext or local browser storage.
+            </li>
             <li>Rotate encryption keys regularly using KMS solutions.</li>
             <li>Log every access and modification to critical data files.</li>
           </ul>
@@ -114,10 +117,16 @@ const Module6 = ({ title }) => {
         <Section title="💡 Common Mistakes in Data Security">
           <HighlightBox>
             <ul className="list-disc list-inside space-y-1">
-              <li>Relying solely on encryption without proper key management.</li>
-              <li>Failing to enforce multi-factor authentication on dashboards.</li>
+              <li>
+                Relying solely on encryption without proper key management.
+              </li>
+              <li>
+                Failing to enforce multi-factor authentication on dashboards.
+              </li>
               <li>Storing backups without encrypting them.</li>
-              <li>Using outdated encryption libraries vulnerable to attacks.</li>
+              <li>
+                Using outdated encryption libraries vulnerable to attacks.
+              </li>
             </ul>
           </HighlightBox>
         </Section>
@@ -140,8 +149,8 @@ const Module6 = ({ title }) => {
               federal systems, adaptable to healthcare.
             </li>
             <li>
-              <strong>ISO/IEC 27001:</strong> International standard for information
-              security management systems (ISMS).
+              <strong>ISO/IEC 27001:</strong> International standard for
+              information security management systems (ISMS).
             </li>
           </ul>
         </Section>
@@ -149,9 +158,15 @@ const Module6 = ({ title }) => {
         <Section title="🛠️ Hands-On Task">
           <ul className="list-disc list-inside space-y-1">
             <li>Use OpenSSL to encrypt and decrypt a test patient record.</li>
-            <li>Configure a sample IoT device to use TLS for data transmission.</li>
-            <li>Simulate a HIPAA audit using an open-source compliance checker.</li>
-            <li>Use CyberChef to experiment with encoding and hashing methods.</li>
+            <li>
+              Configure a sample IoT device to use TLS for data transmission.
+            </li>
+            <li>
+              Simulate a HIPAA audit using an open-source compliance checker.
+            </li>
+            <li>
+              Use CyberChef to experiment with encoding and hashing methods.
+            </li>
           </ul>
         </Section>
 

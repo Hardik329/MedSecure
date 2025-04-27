@@ -1,4 +1,3 @@
-// Module: Password Security
 import React from "react";
 import LearningObjectives from "../components/LearningObjectives";
 import Quiz from "../components/Quiz";
@@ -10,6 +9,7 @@ import { ProgressBar } from "../components/ProgressBar";
 import InteractiveChecklist from "../components/InteractiveChecklist";
 import KeyTermGlossary from "../components/KeyTermGlossary";
 import VideoEmbed from "../components/VideoEmbed";
+import HandsOn from "../components/HandsOn";
 
 const ModulePasswordSecurity = ({ title }) => {
   const objectives = [
@@ -20,39 +20,92 @@ const ModulePasswordSecurity = ({ title }) => {
   ];
 
   const bestPractices = [
-    ["Use Strong Passwords", "Use at least 12 characters with numbers, symbols, and upper/lowercase letters."],
-    ["Avoid Reuse", "Never reuse passwords across different systems or applications."],
-    ["Use Password Managers", "Store complex, unique passwords securely without needing to remember them all."],
-    ["Enable MFA", "Multi-Factor Authentication adds a layer of security beyond just passwords."],
+    [
+      "Use Strong Passwords",
+      "Use at least 12 characters with numbers, symbols, and upper/lowercase letters.",
+    ],
+    [
+      "Avoid Reuse",
+      "Never reuse passwords across different systems or applications.",
+    ],
+    [
+      "Use Password Managers",
+      "Store complex, unique passwords securely without needing to remember them all.",
+    ],
+    [
+      "Enable MFA",
+      "Multi-Factor Authentication adds a layer of security beyond just passwords.",
+    ],
+  ];
+
+  const tasks = [
+    {
+      label:
+        "Crack password of flag.zip using 'john the ripper'. First convert the file to hash and crack the hash using john.",
+      flag: "123456",
+    },
+    {
+      label:
+        "Crack the hash from the file hash.txt using hashcat. You may need the wordlist rockyou.txt provided in the resources folder.",
+      flag: "admin123",
+    },
   ];
 
   const quizQuestions = [
     {
       question: "Which of these is a good password practice?",
-      options: ["123456", "Qwerty", "Reusing passwords", "Using a password manager"],
-      answer: "Using a password manager",
+      options: [
+        "123456",
+        "Qwerty",
+        "Reusing passwords",
+        "Using a password manager",
+      ],
+      correctIndex: 3,
     },
     {
       question: "What is MFA?",
-      options: ["Medical Form Authentication", "Multiple Form Access", "Multi-Factor Authentication", "Mandatory First Access"],
-      answer: "Multi-Factor Authentication",
+      options: [
+        "Medical Form Authentication",
+        "Multiple Form Access",
+        "Multi-Factor Authentication",
+        "Mandatory First Access",
+      ],
+      correctIndex: 2,
     },
     {
       question: "Why avoid reusing passwords?",
-      options: ["To avoid remembering them", "To save time", "To prevent credential stuffing", "To look professional"],
-      answer: "To prevent credential stuffing",
+      options: [
+        "To avoid remembering them",
+        "To save time",
+        "To prevent credential stuffing",
+        "To look professional",
+      ],
+      correctIndex: 2,
     },
     {
-      question: "Which attack tries many possible passwords until it finds the correct one?",
+      question:
+        "Which attack tries many possible passwords until it finds the correct one?",
       options: ["Phishing", "Brute Force", "Spoofing", "SQL Injection"],
-      answer: "Brute Force",
+      correctIndex: 1,
     },
   ];
 
   const glossary = [
-    { term: "Password Manager", definition: "Software that helps create, store, and manage strong, unique passwords." },
-    { term: "Credential Stuffing", definition: "An attack where stolen username/password pairs are used across multiple sites." },
-    { term: "Brute Force Attack", definition: "A method where an attacker tries many password combinations until the correct one is found." },
+    {
+      term: "Password Manager",
+      definition:
+        "Software that helps create, store, and manage strong, unique passwords.",
+    },
+    {
+      term: "Credential Stuffing",
+      definition:
+        "An attack where stolen username/password pairs are used across multiple sites.",
+    },
+    {
+      term: "Brute Force Attack",
+      definition:
+        "A method where an attacker tries many password combinations until the correct one is found.",
+    },
   ];
 
   return (
@@ -66,11 +119,13 @@ const ModulePasswordSecurity = ({ title }) => {
       <div className="p-6 max-w-5xl mx-auto">
         <LearningObjectives objectives={objectives} />
 
-        <VideoEmbed  url="https://www.youtube.com/embed/t8SQo3R7qeU?si=E2TC26fnPgSCuRS0" />
+        <VideoEmbed url="https://www.youtube.com/embed/t8SQo3R7qeU?si=E2TC26fnPgSCuRS0" />
 
         <Section title="Why Password Security Matters">
           <p>
-            Weak or reused passwords are one of the most exploited entry points in cyberattacks. In medical settings, a single compromised account could expose sensitive patient data or critical systems.
+            Weak or reused passwords are one of the most exploited entry points
+            in cyberattacks. In medical settings, a single compromised account
+            could expose sensitive patient data or critical systems.
           </p>
         </Section>
 
@@ -91,11 +146,17 @@ const ModulePasswordSecurity = ({ title }) => {
         <HighlightBox>
           <strong>Case: Compromised EHR Login</strong>
           <p>
-            A staff member reused their hospital password on a social site that was later breached. Attackers accessed the EHR using those credentials. Strong password hygiene could have prevented it.
+            A staff member reused their hospital password on a social site that
+            was later breached. Attackers accessed the EHR using those
+            credentials. Strong password hygiene could have prevented it.
           </p>
         </HighlightBox>
 
         <KeyTermGlossary terms={glossary} />
+        <HandsOn
+          tasks={tasks}
+          title="In this challenge we will be learning how to crack password hashes using tools like hashcat and john the ripper."
+        />
 
         <Quiz questions={quizQuestions} />
 

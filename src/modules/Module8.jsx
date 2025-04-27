@@ -6,7 +6,7 @@ import Table from "../components/Table";
 import HighlightBox from "../components/HighlightBox";
 import NextModuleCard from "../components/NextModuleCard";
 import { ProgressBar } from "../components/ProgressBar";
-import {ApiPlayground} from "../components/ApiPlayground"
+import { ApiPlayground } from "../components/ApiPlayground";
 import LogTimeline from "../components/LogTimeline";
 
 const Module8 = ({ title }) => {
@@ -15,21 +15,37 @@ const Module8 = ({ title }) => {
     "Learn the difference between real-time monitoring and periodic audits.",
     "Explore common monitoring tools and their applications in healthcare environments.",
     "Identify indicators of compromise (IoCs) and anomaly detection methods.",
-    "Implement audit trails to ensure compliance and incident response readiness."
+    "Implement audit trails to ensure compliance and incident response readiness.",
   ];
-  
+
   const vulnerabilities = [
-    { step: "IDOR (Insecure Direct Object Reference)", description: "Accessing unauthorized records by modifying object IDs in API requests." },
-    { step: "Broken Authentication", description: "Failure in implementing token expiration or secure auth mechanisms." },
-    { step: "Rate Limiting Bypass", description: "Sending excessive requests to APIs without detection or throttling." },
-    { step: "Improper Input Validation", description: "Allowing injection attacks due to unsanitized input." },
+    {
+      step: "IDOR (Insecure Direct Object Reference)",
+      description:
+        "Accessing unauthorized records by modifying object IDs in API requests.",
+    },
+    {
+      step: "Broken Authentication",
+      description:
+        "Failure in implementing token expiration or secure auth mechanisms.",
+    },
+    {
+      step: "Rate Limiting Bypass",
+      description:
+        "Sending excessive requests to APIs without detection or throttling.",
+    },
+    {
+      step: "Improper Input Validation",
+      description: "Allowing injection attacks due to unsanitized input.",
+    },
   ];
 
   const quizQuestions = [
     {
-      question: "Which tool is commonly used to intercept and test web/API traffic?",
+      question:
+        "Which tool is commonly used to intercept and test web/API traffic?",
       options: ["Postman", "Wireshark", "Burp Suite", "Fiddler"],
-      answer: "Burp Suite"
+      correctIndex: 2,
     },
     {
       question: "What is IDOR a result of?",
@@ -37,9 +53,9 @@ const Module8 = ({ title }) => {
         "Incorrect input encoding",
         "Access control failure",
         "Logging misconfiguration",
-        "Improper HTTPS setup"
+        "Improper HTTPS setup",
       ],
-      answer: "Access control failure"
+      correctIndex: 1,
     },
     {
       question: "Why is rate limiting important in API security?",
@@ -47,9 +63,9 @@ const Module8 = ({ title }) => {
         "To reduce electricity usage",
         "To log API traffic",
         "To prevent brute-force and DoS attacks",
-        "To improve visual interface"
+        "To improve visual interface",
       ],
-      answer: "To prevent brute-force and DoS attacks"
+      correctIndex: 2,
     },
     {
       question: "What does input validation prevent?",
@@ -57,24 +73,34 @@ const Module8 = ({ title }) => {
         "Hardware issues",
         "SQL or command injection",
         "Firmware corruption",
-        "Battery drain"
+        "Battery drain",
       ],
-      answer: "SQL or command injection"
+      correctIndex: 1,
     },
   ];
 
   const apiEndpoints = [
-    { method: "GET", path: "/patients/1", description: "Simulates IDOR by accessing other patients' records." },
-    { method: "POST", path: "/auth/login", description: "Tests weak token-based login simulation." },
-    { method: "POST", path: "/device/upload", description: "Uploads unvalidated data simulating an injection risk." }
+    {
+      method: "GET",
+      path: "/patients/1",
+      description: "Simulates IDOR by accessing other patients' records.",
+    },
+    {
+      method: "POST",
+      path: "/auth/login",
+      description: "Tests weak token-based login simulation.",
+    },
+    {
+      method: "POST",
+      path: "/device/upload",
+      description: "Uploads unvalidated data simulating an injection risk.",
+    },
   ];
 
   return (
     <div className="">
       <div className="bg-[#1c2538] h-40 flex items-center justify-center">
-        <h1 className="text-4xl font-bold text-white">
-          Module 8: {title}
-        </h1>
+        <h1 className="text-4xl font-bold text-white">Module 8: {title}</h1>
       </div>
       <div>
         <ProgressBar />
@@ -84,9 +110,10 @@ const Module8 = ({ title }) => {
 
         <Section title="Introduction to Web & API Security">
           <p>
-            APIs are vital in modern healthcare infrastructure, enabling devices, portals,
-            and databases to communicate securely. Misconfigured APIs, however, are one
-            of the biggest sources of data breaches in medical IoT.
+            APIs are vital in modern healthcare infrastructure, enabling
+            devices, portals, and databases to communicate securely.
+            Misconfigured APIs, however, are one of the biggest sources of data
+            breaches in medical IoT.
           </p>
         </Section>
 
@@ -99,15 +126,20 @@ const Module8 = ({ title }) => {
 
         <Section title="Tools for Web & API Testing">
           <HighlightBox>
-            <strong>Postman:</strong> Useful for exploring and testing APIs via crafted requests, header editing, and environment setup.
-            <br /><br />
-            <strong>Burp Suite:</strong> Intercept API traffic in real-time, inject payloads, and test for common issues like IDOR and auth bypass.
+            <strong>Postman:</strong> Useful for exploring and testing APIs via
+            crafted requests, header editing, and environment setup.
+            <br />
+            <br />
+            <strong>Burp Suite:</strong> Intercept API traffic in real-time,
+            inject payloads, and test for common issues like IDOR and auth
+            bypass.
           </HighlightBox>
         </Section>
 
         <Section title="Hands-On Lab: MedVitals Vulnerable API">
           <p>
-            Test the sample endpoints below to simulate vulnerabilities and see how APIs respond to different inputs. No real data is affected.
+            Test the sample endpoints below to simulate vulnerabilities and see
+            how APIs respond to different inputs. No real data is affected.
           </p>
           <ApiPlayground
             baseUrl="https://api.medvitals.test"
@@ -117,21 +149,29 @@ const Module8 = ({ title }) => {
 
         <Section title="Real-Time Monitoring vs Periodic Auditing">
           <p className="mb-4">
-            Medical IoT environments benefit from both real-time monitoring and scheduled audits. Real-time monitoring provides instant alerts for anomalies, while audits give insights into policy compliance, system performance, and long-term security trends.
+            Medical IoT environments benefit from both real-time monitoring and
+            scheduled audits. Real-time monitoring provides instant alerts for
+            anomalies, while audits give insights into policy compliance, system
+            performance, and long-term security trends.
           </p>
           <ul className="list-disc list-inside space-y-2">
             <li>
-              <strong>Real-Time Monitoring:</strong> Detects and responds to threats as they occur. Often uses SIEM (Security Information and Event Management) systems.
+              <strong>Real-Time Monitoring:</strong> Detects and responds to
+              threats as they occur. Often uses SIEM (Security Information and
+              Event Management) systems.
             </li>
             <li>
-              <strong>Periodic Auditing:</strong> Reviews logs and configurations at regular intervals to detect misconfigurations and violations.
+              <strong>Periodic Auditing:</strong> Reviews logs and
+              configurations at regular intervals to detect misconfigurations
+              and violations.
             </li>
           </ul>
         </Section>
 
         <Section title="Indicators of Compromise (IoCs)">
           <p className="mb-4">
-            IoCs are artifacts observed on a network or in an operating system that indicate a potential intrusion.
+            IoCs are artifacts observed on a network or in an operating system
+            that indicate a potential intrusion.
           </p>
           <ul className="list-disc list-inside space-y-2">
             <li>Unusual outbound traffic from medical devices.</li>
@@ -144,16 +184,20 @@ const Module8 = ({ title }) => {
         <Section title="Monitoring Tools for Medical IoT">
           <ul className="list-disc list-inside space-y-2">
             <li>
-              <strong>Zeek:</strong> A powerful network analysis tool for logging real-time traffic.
+              <strong>Zeek:</strong> A powerful network analysis tool for
+              logging real-time traffic.
             </li>
             <li>
-              <strong>ELK Stack:</strong> Elasticsearch, Logstash, and Kibana — a stack for visualizing and analyzing logs.
+              <strong>ELK Stack:</strong> Elasticsearch, Logstash, and Kibana —
+              a stack for visualizing and analyzing logs.
             </li>
             <li>
-              <strong>Wireshark:</strong> Useful for packet inspection and troubleshooting unusual behavior.
+              <strong>Wireshark:</strong> Useful for packet inspection and
+              troubleshooting unusual behavior.
             </li>
             <li>
-              <strong>Wazuh:</strong> An open-source SIEM that integrates host-based intrusion detection and log analysis.
+              <strong>Wazuh:</strong> An open-source SIEM that integrates
+              host-based intrusion detection and log analysis.
             </li>
           </ul>
         </Section>

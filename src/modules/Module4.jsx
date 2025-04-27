@@ -1,9 +1,10 @@
 import React from "react";
 import Quiz from "../components/Quiz";
 import DeviceHardeningLab from "../components/DeviceHardeningLab";
+import DualTerminal from "../components/DualTerminal";
+import HandsOn from "../components/HandsOn";
 
 const Module4 = () => {
-  const [showTerminal, setShowTerminal] = React.useState(false);
   const questions = [
     {
       question: "What is the goal of 'device hardening'?",
@@ -167,4 +168,4 @@ const Module4 = () => {
   );
 };
 
-export default Module4;
+export default Module4;
